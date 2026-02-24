@@ -1,0 +1,3 @@
+interface Environment {
+  production: boolean;
+}
