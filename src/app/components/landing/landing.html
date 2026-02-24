@@ -1,1 +1,89 @@
-<p>landing works!</p>
+<div class="container">
+  <div class="content-container">
+    <section id="about" class="hero">
+      <div class="left">
+        <div class="image-container">
+          <img class="image-contain" src="./images/Legarde.png" />
+        </div>
+        <h3>Full Stack Web Developer</h3>
+      </div>
+      <div>
+        <h2>About Me</h2>
+        <div class="hero-details">
+          <p>
+            Hello! I’m Raven Andre D. Legarde, a 4th year BSIT student currently studying at Gordon College. I’m passionate to put my knowledge and skills that
+            i have acquired throughout my course to use. I’m also very open in learning new skills, and I’m excited to gain practical knowledge by exposing
+            myself in an IT work field.
+          </p>
+          <a href="./images/Legarde-Resume.png" target="_blank">
+            <button mat-raised-button style="width: fit-content">View Resume</button>
+          </a>
+          <div class="social-links">
+            <a href="https://www.facebook.com/ravenandre.legarde" target="_blank">
+              <button mat-icon-button>
+                <span class="mdi mdi-facebook"></span>
+              </button>
+            </a>
+
+            <a href="https://www.linkedin.com/in/raven-legarde-89756717a/" target="_blank">
+              <button mat-icon-button>
+                <span class="mdi mdi-linkedin"></span>
+              </button>
+            </a>
+
+            <a href="https://github.com/Raveniis" target="_blank">
+              <button mat-icon-button>
+                <span class="mdi mdi-github"></span>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="text-center">Skills</h2>
+      <div class="tech-skills">
+        <div class="skill-card" *ngFor="let skill of skills">
+          <img [src]="skill.src" [alt]="skill.alt" />
+          <p>{{ skill.alt }}</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="vlog">
+      <h2 class="text-center">OJT Vlog</h2>
+      <video controls>
+        <source src="./videos/OJT Blog.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </section>
+
+    <section id="ojt-documentation">
+      <h2 class="text-center">Weekly Documentation</h2>
+      <div class="card-container">
+        <mat-card
+          *ngFor="let item of documentation; let i = index"
+          appearance="outlined"
+          class="card pointer"
+          matRipple
+          [routerLink]="['/documentation/week/', item.week]"
+          routerLinkActive="router-link-active"
+          [matRippleColor]="'rgba(255, 255, 255, 0.05)'"
+        >
+          <mat-card-header>
+            <mat-card-title>Week # {{ item.week }}</mat-card-title>
+            <mat-card-subtitle>{{ item.span }}</mat-card-subtitle>
+            <img style="margin-left: auto" class="image-contain" mat-card-sm-image [src]="item.preview_image" alt="Image of documentation" />
+          </mat-card-header>
+          <mat-card-content>
+            <p>{{ item.preview_documentation }}</p>
+          </mat-card-content>
+          <mat-card-footer>
+            <p>Click to see more...</p>
+          </mat-card-footer>
+        </mat-card>
+      </div>
+    </section>
+  </div>
+</div>

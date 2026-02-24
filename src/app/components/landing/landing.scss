@@ -1,0 +1,141 @@
+.container {
+  display: flex;
+  padding: 100px 0;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  width: 100%;
+  flex: 1;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1000px;
+  gap: 80px;
+
+  h2 {
+    font-size: 38px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 20px 0 30px;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  &-details {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  &>* {
+    flex: 1;
+    min-width: 500px;
+  }
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    .image-container {
+      height: 60vh;
+      background: linear-gradient(to top, var(--primary-color-800), var(--primary-color));
+      overflow: hidden;
+      padding: 10px 50px;
+      border-radius: 20px;
+      z-index: 2;
+    }
+  }
+
+  .social-links {
+    display: flex;
+    gap: 5px;
+
+    span {
+      color: white;
+    }
+  }
+}
+
+.tech-skills {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.skill-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 120px;
+  text-align: center;
+  padding: 15px 10px;
+  border: 2px solid var(--primary-color-800);
+  border-radius: 8px;
+  background-color: #e0e0e0;
+  color: #111;
+  transition: transform 0.3s;
+
+  img {
+    width: 70px;
+    height: 70px;
+  }
+
+  &:hover {
+    transform: scale(1.05) translateY(-10px);
+  }
+}
+
+video {
+  width: 100%;
+  max-height: 550px;
+  border-radius: 8px;
+}
+
+.card {
+  flex: 1 1 350px;
+  height: 250px;
+  border: 5px solid var(--primary-color-800);
+  background-color: #1d1a30;
+
+  mat-card-subtitle {
+    color: #b0b0b0;
+  }
+
+  mat-card-content {
+    margin: 10px 0 15px;
+    p {
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      line-height: 1.5rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+
+    }
+  }
+
+  mat-card-footer {
+    color: var(--primary-color-200);
+    padding: 0 10px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    gap: 20px;
+  }
+}
