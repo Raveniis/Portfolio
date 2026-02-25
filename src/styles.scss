@@ -6,6 +6,8 @@
 @theme {
   --color-blue-200: #8892b0;
   --color-blue-400: #3d4459;
+  --color-blue-800: #1e293b;
+  --color-blue-900: #171f2c;
   --color-blue-950: #131c2a;
   --secondary-color: #020c1b;
 }
@@ -40,13 +42,11 @@ body {
   height: 100%;
 }
 
-html,
-body {
-  color: white;
-  scroll-behavior: smooth;
+// html,
+// body {
 //   font-family: 'Poppins', "Helvetica Neue", sans-serif;
 //   background-color: var(--primary-color);
-}
+// }
 
 p {
   margin: 0

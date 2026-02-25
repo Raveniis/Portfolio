@@ -1,9 +1,12 @@
-<header class="flex justify-between items-center py-4 px-6 h-[60px] z-10 bg-blue-950">
-      <h3>Portfolio</h3>
-      <nav class="flex gap-5">
-            <a href="#about">About Me</a>
-            <a href="#skills">Skills</a>
-            <a href="#vlog">Vlog</a>
-            <a href="#ojt-documentation">Documentation</a>
-      </nav>
+<header class="sticky sm:static top-0 shadow-md md:shadow-none flex justify-between items-center py-4 px-6 h-[60px] z-10 bg-blue-950">
+  <h3 class="text-white"></h3>
+  <nav class="hidden sm:flex gap-5">
+    <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" href="#about">About Me</a>
+    <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" href="#skills">Skills</a>
+    <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" href="#vlog">Vlog</a>
+    <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" href="#ojt-documentation">Documentation</a>
+  </nav>
+  <button matIconButton class="sm:hidden!" (click)="toggleSidenav()">
+    <mat-icon class="text-white!">menu</mat-icon>
+  </button>
 </header>
