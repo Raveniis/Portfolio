@@ -1,0 +1,13 @@
+<section id="skills" class="flex flex-col gap-8">
+  <h2 class="text-center text-4xl uppercase tracking-wide">Skills</h2>
+  <div class="flex flex-wrap gap-4 justify-center">
+    @for (skill of skills(); track skill.name) {
+      <div
+        class="flex flex-col items-center gap-2 w-32 h-fit p-4 rounded-md border-1 border-blue-950 bg-blue-500 hover:scale-105 hover:-translate-y-1 transition-all duration-300"
+      >
+        <img class="w-full h-full p-2" [src]="skill.src" [alt]="skill.name" />
+        <p class="text-center text-lg text-gray-200">{{ skill.name }}</p>
+      </div>
+    }
+  </div>
+</section>

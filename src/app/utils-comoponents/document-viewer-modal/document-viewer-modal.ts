@@ -20,6 +20,13 @@ export class DocumentViewerModal {
     console.log(this.data);
   }
 
+  downloadDocument() {
+    const link = document.createElement('a');
+    link.href = this.data.url;
+    link.download = this.data.title;
+    link.click();
+  }
+
   closeModal() {
     this.dialogRef.close();
   }

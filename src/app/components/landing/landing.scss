@@ -1,41 +1,4 @@
-.left {
-  .image-container {
-    height: 60vh;
-    background: linear-gradient(to top, var(--primary-color-800), var(--primary-color));
-    padding: 10px 50px;
-  }
-}
 
-.tech-skills {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.skill-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  width: 120px;
-  text-align: center;
-  padding: 15px 10px;
-  border: 2px solid var(--primary-color-800);
-  border-radius: 8px;
-  background-color: #e0e0e0;
-  color: #111;
-  transition: transform 0.3s;
-
-  img {
-    width: 70px;
-    height: 70px;
-  }
-
-  &:hover {
-    transform: scale(1.05) translateY(-10px);
-  }
-}
 
 video {
   width: 100%;

@@ -1,22 +1,27 @@
 @use '@angular/material' as mat;
 @use 'tailwindcss';
+@use './themes/theme-colors' as theme;
 
 @theme {
   --color-blue-200: #8892b0;
+  --color-blue-300: #636b85;
   --color-blue-400: #3d4459;
+  --color-blue-500: #2b3142;
   --color-blue-800: #1e293b;
   --color-blue-900: #171f2c;
   --color-blue-950: #131c2a;
   --secondary-color: #020c1b;
 }
 
+// $primary: mat.define-palette(mat.$blue-palette, 500, 300, 700);
+
 html {
   height: 100%;
   @include mat.theme(
     (
       color: (
-        primary: mat.$azure-palette,
-        tertiary: mat.$blue-palette,
+        primary: theme.$primary-palette,
+        tertiary: theme.$tertiary-palette,
       ),
       typography: Roboto,
       density: 0,
@@ -54,4 +59,26 @@ a {
   width: 100vw;
   height: 100vh;
   border-radius: 0;
+}
+
+*::-webkit-scrollbar {
+  width: 0.3rem;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+
+  &:hover {
+    background: #ffffff10;
+  }
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--color-blue-300);
+  border-radius: 999px;
+  transition: all 0.4s ease-in-out;
+
+  &:active {
+    background-color: var(--color-blue-200);
+  }
 }
