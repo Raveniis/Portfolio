@@ -1,15 +1,10 @@
 <mat-drawer-container class="" [hasBackdrop]="true">
-  <mat-drawer #drawer [mode]="'over'" position="end" class="bg-blue-950!">
-    <nav class="flex flex-col gap-2 px-4 py-6">
-      <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" (click)="drawer.close()" href="#about">About</a>
-      <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" (click)="drawer.close()" href="#skills">Skills</a>
-      <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" (click)="drawer.close()" href="#vlog">Vlog</a>
-      <a class="text-gray-200 text-lg hover:text-white ease-in-out duration-200" (click)="drawer.close()" href="#ojt-documentation">Documentation</a>
-    </nav>
+  <mat-drawer #drawer [mode]="'over'" position="end" class="dark:bg-blue-950!">
+    <app-sidebar (onToggleSidenav)="drawer.toggle()" />
   </mat-drawer>
-  <mat-drawer-content class="h-screen! scroll-smooth overflow-x-hidden! bg-blue-800">
+  <mat-drawer-content class="h-screen! scroll-smooth overflow-x-hidden! dark:bg-blue-850">
     <app-header (onToggleSidenav)="drawer.toggle()" />
-    <router-outlet  />
+    <router-outlet />
     <app-footer />
   </mat-drawer-content>
 </mat-drawer-container>

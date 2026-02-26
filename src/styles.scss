@@ -2,6 +2,8 @@
 @use 'tailwindcss';
 @use './themes/theme-colors' as theme;
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --color-blue-200: #8892b0;
   --color-blue-300: #636b85;
@@ -15,8 +17,13 @@
 
 // $primary: mat.define-palette(mat.$blue-palette, 500, 300, 700);
 
+* {
+  box-sizing: border-box;
+  transition: background-color 0.5s ease-in-out;
+}
 html {
   height: 100%;
+  color-scheme: light;
   @include mat.theme(
     (
       color: (
@@ -29,8 +36,11 @@ html {
   );
 }
 
+.dark {
+  color-scheme: dark;
+}
+
 body {
-  color-scheme: light;
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
@@ -80,5 +90,13 @@ a {
 
   &:active {
     background-color: var(--color-blue-200);
+  }
+}
+
+.dark {
+  background-color: var(--color-blue-500);
+
+  &:active {
+    background-color: var(--color-blue-300);
   }
 }
