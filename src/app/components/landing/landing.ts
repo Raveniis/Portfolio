@@ -22,7 +22,7 @@ export class Landing {
       panelClass: 'mat-dialog-fullscreen',
       data: {
         title: 'Resume',
-        url: './assets/Legarde-Resume.pdf',
+        url: './public/documents/document.pdf',
       },
     });
   }

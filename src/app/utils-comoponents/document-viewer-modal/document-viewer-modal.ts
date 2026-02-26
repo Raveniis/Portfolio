@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
 import { MatButtonModule } from "@angular/material/button";
 import { MaterialModules } from "../../../modules/module";
+import { SafeUrlPipe } from '../../pipes/safe-url-pipe';
 
 @Component({
   selector: 'app-document-viewer-modal',
-  imports: [MatDialogContent, MatButtonModule, MaterialModules, MatDialogTitle],
+  imports: [MatDialogContent, MatButtonModule, MaterialModules, SafeUrlPipe],
   templateUrl: './document-viewer-modal.html',
   styleUrl: './document-viewer-modal.scss',
 })

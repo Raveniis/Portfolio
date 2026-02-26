@@ -4,5 +4,6 @@
 </div>
 
 <mat-dialog-content>
-  <p>document-viewer-modal works!</p>
+  
+  <iframe [src]="data.url | safeUrl" class="w-full h-full"></iframe>
 </mat-dialog-content>
