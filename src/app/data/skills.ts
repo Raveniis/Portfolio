@@ -1,4 +1,4 @@
-const skills = [
+const skills: Skill[] = [
   {
     src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-plain.svg',
     name: 'HTML',
