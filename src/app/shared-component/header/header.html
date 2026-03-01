@@ -1,4 +1,4 @@
-<header class="sticky sm:static top-0 shadow-md md:shadow-none flex justify-between items-center py-4 px-6 h-[60px] z-10 bg-white dark:bg-blue-950">
+<header class="sticky sm:static top-0 shadow-md flex justify-between items-center py-4 px-6 h-[60px] z-10 bg-white dark:bg-blue-950">
   <div>
     @if (darkMode) {
       <button matIconButton (click)="toggleDarkMode()">
@@ -11,10 +11,11 @@
     }
   </div>
   <nav class="hidden sm:flex gap-5">
-    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-white ease-in-out duration-200" href="#about">About</a>
-    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-white ease-in-out duration-200" [routerLink]="'/'" [fragment]="'skills'">Skills</a>
-    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-white ease-in-out duration-200" [routerLink]="'/'" [fragment]="'experience'">Experience</a>
-    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-white ease-in-out duration-200" [routerLink]="'projects'">Projects</a>
+    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white ease-in-out duration-200" href="./#about">About</a>
+    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white ease-in-out duration-200" href="./#skills">Skills</a>
+    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white ease-in-out duration-200" href="./#experience">Experience</a>
+    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white ease-in-out duration-200" href="./#education">Education</a>
+    <a class="text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white ease-in-out duration-200" [routerLink]="'projects'">Projects</a>
   </nav>
   <button matIconButton class="sm:hidden!" (click)="toggleSidenav()">
     <mat-icon class="text-black-200! dark:text-white!">menu</mat-icon>

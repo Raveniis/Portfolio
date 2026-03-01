@@ -58,6 +58,10 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
-migration to here 
+migration to here
 
-ng generate @angular/core:control-flow
+//////////////////////
+
+update GH pages
+
+npx ngh --dir=dist/portfolio/browser --branch=gh-pages
