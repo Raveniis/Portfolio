@@ -1,10 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [MaterialModules, RouterOutlet, RouterLink],
+  imports: [MaterialModules, RouterLink],
   templateUrl: './header.html',
 })
 export class Header {

@@ -1,6 +1,8 @@
 <section id="about" class="flex flex-col sm:flex-row items-center gap-16 sm:gap-4">
   <div class="flex flex-2 flex-col items-center gap-2">
-    <div class="overflow-hidden h-fit min-h-64 w-fit min-w-64 bg-gradient-to-t from-gray-300 to-gray-100 dark:from-blue-800 dark:to-blue-200 rounded-lg p-2 z-2">
+    <div
+      class="overflow-hidden h-fit min-h-64 w-fit min-w-64 bg-gradient-to-t from-gray-300 to-gray-100 dark:from-blue-800 dark:to-blue-200 rounded-lg p-2 z-2"
+    >
       <img class="h-full w-full object-contain" src="" />
     </div>
     <h3 class="text-xl">Full Stack Web Developer</h3>
@@ -16,30 +18,7 @@
         malesuada sem, vel pretium erat sollicitudin ac. Nunc commodo placerat dui et ultricies. In id posuere est, suscipit condimentum velit.
       </p>
       <button mat-raised-button style="width: fit-content" (click)="viewDocument()">View Resume</button>
-      <div class="flex gap-2">
-        <tooltip matTooltip="Facebook" matTooltipPosition="below">
-          <a href="https://www.facebook.com/ravenandre.legarde" target="_blank">
-            <button mat-icon-button>
-              <span class="mdi mdi-facebook text-black-200 dark:text-white"></span>
-            </button>
-          </a>
-        </tooltip>
-
-        <tooltip matTooltip="LinkedIn" matTooltipPosition="below">
-          <a href="https://www.linkedin.com/in/raven-legarde-89756717a/" target="_blank">
-            <button mat-icon-button>
-              <span class="mdi mdi-linkedin text-black-200 dark:text-white"></span>
-            </button>
-          </a>
-        </tooltip>
-        <tooltip matTooltip="GitHub" matTooltipPosition="below">
-          <a href="https://github.com/Raveniis" target="_blank">
-            <button mat-icon-button>
-              <span class="mdi mdi-github text-black-200 dark:text-white"></span>
-            </button>
-          </a>
-        </tooltip>
-      </div>
+      <app-socials size="large" />
     </div>
   </div>
 </section>

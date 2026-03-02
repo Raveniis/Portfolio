@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
-import { RouterOutlet, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-project-overview',
-  imports: [MaterialModules, RouterOutlet, RouterLink],
+  imports: [MaterialModules, RouterLink],
   templateUrl: './project-overview.html',
   styleUrl: './project-overview.scss',
 })
-export class ProjectOverview {
-
-}
+export class ProjectOverview {}

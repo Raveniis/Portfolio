@@ -2,10 +2,11 @@ import { Component, inject } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
 import { DocumentViewerModal } from '../../../utils-comoponents/document-viewer-modal/document-viewer-modal';
 import { MatDialog } from '@angular/material/dialog';
+import { Socials } from '../../../shared-component/socials/socials';
 
 @Component({
   selector: 'app-hero',
-  imports: [MaterialModules],
+  imports: [MaterialModules, Socials],
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
