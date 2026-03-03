@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class Socials {
   @Input() size!: 'small' | 'medium' | 'large';
   @Input() isResponsive: boolean = false;
+  @Input() isColorFixed: boolean = false;
 
   iconSize: string = 'text-2xl';
   iconGap: string = 'gap-2';

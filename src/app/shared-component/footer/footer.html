@@ -1,18 +1,14 @@
 <footer class="mt-12">
-  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-blue-900 px-12 py-8 gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 bg-blue-900 p-12 gap-8">
     <div class="flex flex-col gap-4">
-      <h5 class="text-lg font-medium text-center sm:text-left">Connect</h5>
-      <app-socials size="medium" [isResponsive]="true" />
+      <h5 class="text-white text-lg font-medium text-center sm:text-left">Connect</h5>
+      <app-socials size="medium" [isResponsive]="true" [isColorFixed]="true" />
     </div>
     <div class="flex flex-col gap-4">
-      <h5 class="text-lg font-medium text-center sm:text-left">Sitemap</h5>
+      <h5 class="text-white text-lg font-medium text-center sm:text-left">Sitemap</h5>
       <nav class="flex flex-col gap-3 items-center sm:items-start">
-        @for (link  of navigationLinks; track $index) {
-          <a
-            [href]="link.fragment"
-            class="text-gray-300 hover:text-white transition-colors duration-200"
-            >{{ link.label }}</a
-          >
+        @for (link of navigationLinks; track $index) {
+          <a [href]="link.fragment" class="text-gray-300 hover:text-white transition-colors duration-200">{{ link.label }}</a>
         }
       </nav>
     </div>
