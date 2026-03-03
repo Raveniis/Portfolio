@@ -2,7 +2,7 @@
   <mat-drawer #drawer [mode]="'over'" position="end" class="dark:bg-blue-950!">
     <app-sidebar (onToggleSidenav)="drawer.toggle()" />
   </mat-drawer>
-  <mat-drawer-content class="h-screen! scroll-smooth overflow-x-hidden! dark:bg-blue-850">
+  <mat-drawer-content>
     <app-header (onToggleSidenav)="drawer.toggle()" />
     <router-outlet />
     <app-footer />

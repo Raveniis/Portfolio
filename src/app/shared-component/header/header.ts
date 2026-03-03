@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
 import { RouterLink } from '@angular/router';
+import navigationLinks from '../../data/navigationLinks';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,8 @@ import { RouterLink } from '@angular/router';
 })
 export class Header {
   @Output() onToggleSidenav = new EventEmitter<void>();
-
+  navigationLinks = navigationLinks;
+  
   ngOnInit() {
     const savedTheme = sessionStorage.getItem('theme');
 

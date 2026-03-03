@@ -19,7 +19,9 @@
 
 * {
   box-sizing: border-box;
-  transition: all 0.5s ease-in-out;
+  transition:
+    color 0.5s ease-in-out,
+    background-color 0.5s ease-in-out;
 }
 html {
   height: 100%;
@@ -73,6 +75,10 @@ a {
 
 .mat-mdc-card-header-text {
   width: 100%;
+}
+
+.mat-drawer-container {
+  height: 100vh;
 }
 
 *::-webkit-scrollbar {

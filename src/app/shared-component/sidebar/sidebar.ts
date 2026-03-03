@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import navigationLinks from '../../data/navigationLinks';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,6 +9,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class Sidebar {
   @Output() onToggleSidenav = new EventEmitter<void>();
+  navigationLinks = navigationLinks;
 
   toggleSidenav() {
     this.onToggleSidenav.emit();
