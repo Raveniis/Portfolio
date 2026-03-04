@@ -1,4 +1,4 @@
-<section id="about" class="flex flex-col sm:flex-row items-center gap-16 sm:gap-4">
+<section id="about" class="flex flex-col sm:flex-row items-center gap-16 sm:gap-4" trackSection>
   <div class="flex flex-2 flex-col items-center gap-2">
     <div
       class="overflow-hidden h-fit min-h-64 w-fit min-w-64 bg-gradient-to-t from-gray-300 to-gray-100 dark:from-blue-800 dark:to-blue-200 rounded-lg p-2 z-2"
@@ -9,7 +9,7 @@
   </div>
   <div class="flex-3">
     <div class="flex flex-col gap-8">
-      <h2 class="text-6xl uppercase font-medium tracking-wider text-blue-500 dark:text-white">About</h2>
+      <h2 class="text-5xl uppercase font-medium tracking-wider">About</h2>
       <p class="text-md text-black-200 dark:text-gray-200">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin auctor ac enim et accumsan. Fusce lacus nisi, volutpat at condimentum ac, hendrerit et
         massa. Integer feugiat magna augue, eget porttitor risus posuere a. Maecenas nisl nunc, euismod nec sem in, aliquet porta velit. Nam non commodo magna,
@@ -17,7 +17,7 @@
         fermentum. Nulla vitae sem a lectus elementum volutpat nec vitae libero. Duis a sapien placerat, sollicitudin turpis nec, luctus est. Phasellus auctor
         malesuada sem, vel pretium erat sollicitudin ac. Nunc commodo placerat dui et ultricies. In id posuere est, suscipit condimentum velit.
       </p>
-      <button mat-raised-button style="width: fit-content" (click)="viewDocument()">View Resume</button>
+      <button matButton="filled" style="width: fit-content" (click)="viewDocument()">View Resume</button>
       <app-socials size="large" />
     </div>
   </div>

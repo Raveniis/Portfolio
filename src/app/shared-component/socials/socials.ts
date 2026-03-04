@@ -1,6 +1,6 @@
 import { Component, Input, input } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
-import { MaterialModules } from "../../../modules/module";
+import { MaterialModules } from '../../../modules/module';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -21,19 +21,19 @@ export class Socials {
     {
       name: 'LinkedIn',
       icon: 'mdi mdi-linkedin',
-      url: 'https://www.linkedin.com/in/ravenis/'
+      url: 'https://www.linkedin.com/in/ravenis/',
     },
     {
       name: 'GitHub',
       icon: 'mdi mdi-github',
-      url: 'https://github.com/Raveniis'
+      url: 'https://github.com/Raveniis',
     },
     {
       name: 'Email',
       icon: 'mdi mdi-email',
-      url: 'mailto:ravenlegarde@gmail.com'
-    }
-  ]
+      url: 'mailto:ravenlegarde@gmail.com',
+    },
+  ];
 
   ngOnInit() {
     switch (this.size) {
@@ -44,8 +44,7 @@ export class Socials {
         this.iconSize = 'text-2xl';
         break;
       case 'large':
-        this.iconSize = 'text-4xl';
-        this.iconGap = 'gap-4';
+        this.iconSize = 'text-3xl';
         break;
     }
   }

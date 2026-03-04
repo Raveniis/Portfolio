@@ -1,11 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
 import { RouterLink } from '@angular/router';
+import { TrackSectionDirective } from '../../../directives/track-section';
 
 @Component({
   selector: 'app-project-overview',
-  imports: [MaterialModules, RouterLink],
+  imports: [MaterialModules, RouterLink, TrackSectionDirective],
   templateUrl: './project-overview.html',
   styleUrl: './project-overview.scss',
 })
-export class ProjectOverview {}
+export class ProjectOverview {
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective
+
+  get trackElement() {
+    return this.section?.el.nativeElement;
+  }
+}

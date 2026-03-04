@@ -22,6 +22,7 @@
   transition:
     color 0.5s ease-in-out,
     background-color 0.5s ease-in-out;
+  scroll-behavior: smooth;
 }
 html {
   height: 100%;

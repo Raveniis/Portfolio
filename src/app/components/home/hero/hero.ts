@@ -1,16 +1,23 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
 import { DocumentViewerModal } from '../../../utils-comoponents/document-viewer-modal/document-viewer-modal';
 import { MatDialog } from '@angular/material/dialog';
 import { Socials } from '../../../shared-component/socials/socials';
+import { TrackSectionDirective } from '../../../directives/track-section';
 
 @Component({
   selector: 'app-hero',
-  imports: [MaterialModules, Socials],
+  imports: [MaterialModules, Socials, TrackSectionDirective],
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
 export class Hero {
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective
+
+  get trackElement() {
+    return this.section?.el.nativeElement;
+  }
+
   readonly dialog = inject(MatDialog);
 
   viewDocument() {

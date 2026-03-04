@@ -1,10 +1,15 @@
-<section id="education" class="flex flex-col gap-8">
-  <h2 class="text-center text-4xl uppercase tracking-wide">Education</h2>
+<section id="education" class="flex flex-col gap-8" trackSection>
+  <h2 class="text-center font-medium text-5xl uppercase tracking-wider">Education</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-8">
     @for (item of educations; track $index) {
       <mat-card class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
         <mat-card-header>
-          <mat-card-title class="text-black-200! dark:text-gray-200!"><div class="flex flex-row justify-between gap-16"><p>{{ item.school }}</p><p class="text-sm text-gray-500 dark:text-gray-400">{{ item.startDate }} - {{ item.endDate }}</p></div></mat-card-title>
+          <mat-card-title class="text-black-200! dark:text-gray-200!"
+            ><div class="flex flex-row justify-between gap-16">
+              <p>{{ item.school }}</p>
+              <p class="text-sm text-gray-500 dark:text-gray-400">{{ item.startDate }} - {{ item.endDate }}</p>
+            </div></mat-card-title
+          >
           <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">{{ item.course }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content class="text-black-200! dark:text-gray-200! pt-4!">

@@ -1,17 +1,19 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild } from '@angular/core';
 import skills from '../../../data/skills';
-
+import { TrackSectionDirective } from '../../../directives/track-section';
 
 @Component({
   selector: 'app-skills',
-  imports: [],
+  imports: [TrackSectionDirective],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
 export class Skills {
-  skills = signal<Skill[]>(skills);
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective
 
-  ngOnInit() {
-    console.log(this.skills());
+  get trackElement() {
+    return this.section?.el.nativeElement;
   }
+  
+  skills = signal<Skill[]>(skills);
 }

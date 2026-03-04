@@ -1,22 +1,17 @@
-import { Component } from '@angular/core';
-import { MatCard, MatCardHeader } from '@angular/material/card';
+import { Component, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
+import { TrackSectionDirective } from '../../../directives/track-section';
 
 @Component({
   selector: 'app-experience',
-  imports: [MaterialModules],
+  imports: [MaterialModules, TrackSectionDirective],
   templateUrl: './experience.html',
   styleUrl: './experience.scss',
 })
 export class Experience {
-  darkMode = true;
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
 
-  toggleDarkMode() {
-    this.darkMode = !this.darkMode;
-    if (this.darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+  get trackElement() {
+    return this.section?.el.nativeElement;
   }
 }
