@@ -1,9 +1,9 @@
 export const navigationLinks = [
-  { label: 'About', link: '', fragment: '#about' },
-  { label: 'Skills', link: '', fragment: '#skills' },
-  { label: 'Experience', link: '', fragment: '#experience' },
-  { label: 'Education', link: '', fragment: '#education' },
-  { label: 'Projects', link: '', fragment: '#projects' },
+  { label: 'About', link: '', fragment: '#about', id: 'about' },
+  { label: 'Skills', link: '', fragment: '#skills', id: 'skills' },
+  { label: 'Experience', link: '', fragment: '#experience', id: 'experience' },
+  { label: 'Education', link: '', fragment: '#education', id: 'education' },
+  { label: 'Projects', link: '', fragment: '#projects', id: 'projects' },
 ];
 
 export default navigationLinks;
