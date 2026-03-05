@@ -2,8 +2,8 @@
   <mat-drawer #drawer [mode]="'over'" position="end" class="dark:bg-blue-950!">
     <app-sidebar (onToggleSidenav)="drawer.toggle()" />
   </mat-drawer>
-  <mat-drawer-content>
-    <app-header (onToggleSidenav)="drawer.toggle()" />
+  <mat-drawer-content (scroll)="onScroll($event)">
+    <app-header (onToggleSidenav)="drawer.toggle()" [hideNavBar]="hideNav" />
     <router-outlet />
     <app-footer />
   </mat-drawer-content>

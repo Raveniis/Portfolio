@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
 import navigationLinks from '../../data/navigationLinks';
 import { ScrollView } from '../../services/scroll-view.service';
@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './header.html',
 })
 export class Header {
+  @Input() hideNavBar!: boolean;
   @Output() onToggleSidenav = new EventEmitter<void>();
   @ViewChild('navigation') navigationContainer!: ElementRef;
   @ViewChildren('links') navigationElements!: QueryList<ElementRef>;
@@ -19,13 +20,15 @@ export class Header {
   activeSection: string = '';
   subscription: Subscription | any;
   darkMode: boolean = true;
-  navigationRelativeXPosition: number = 0;
   activeIndicatorStyle = {
-    left: '0px',
-    width: '0px',
+    left: 0,
+    width: 0,
   };
 
-  constructor(private scrollViewService: ScrollView) {}
+  constructor(
+    private scrollViewService: ScrollView,
+    private cdr: ChangeDetectorRef,
+  ) {}
 
   ngAfterViewInit() {
     this.subscription = this.scrollViewService.currentSection$.subscribe((currentSection) => {
@@ -34,24 +37,24 @@ export class Header {
       this.highlightActiveLink();
     });
 
-    this.navigationRelativeXPosition = this.navigationContainer.nativeElement.getBoundingClientRect().left;
     this.highlightActiveLink();
   }
 
   private highlightActiveLink() {
-    this.navigationElements.forEach((element) => {
-      const linkId = element.nativeElement.id;
+    const activeElement = this.navigationElements.find((el) => el.nativeElement.dataset.id === this.activeSection);
 
-      if (linkId !== this.activeSection) return;
+    if (!activeElement) return;
 
-      const dimensions = element.nativeElement.getBoundingClientRect();
+    
+    const containerXRelative = this.navigationContainer.nativeElement.getBoundingClientRect().left;
+    const dimensions = activeElement.nativeElement.getBoundingClientRect();
+    this.activeIndicatorStyle = {
+      left: dimensions.left - containerXRelative,
+      width: dimensions.width,
+    };
 
-      this.activeIndicatorStyle = {
-        left: `${dimensions.left - this.navigationRelativeXPosition}px`,
-        width: `${dimensions.width}px`,
-      };
-
-      console.log(this.activeIndicatorStyle);
+    setTimeout(() => {
+      this.cdr.detectChanges();
     });
   }
 

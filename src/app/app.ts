@@ -12,5 +12,25 @@ import { Sidebar } from './shared-component/sidebar/sidebar';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('Test');
+  scrollTop = 0;
+  hideNav = false;
+  private scrollThreshold: number = 100;
+
+  onScroll(event: any) {
+    const currentScroll = event.target.scrollTop;
+
+    if (currentScroll === 0) {
+      this.hideNav = false;
+      return;
+    }
+
+    if (Math.abs(currentScroll - this.scrollTop) < this.scrollThreshold) {
+      return;
+    }
+
+    this.hideNav = this.scrollTop < currentScroll;
+    this.scrollTop = currentScroll;
+
+    console.log(this.hideNav);
+  }
 }

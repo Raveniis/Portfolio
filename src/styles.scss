@@ -5,6 +5,7 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  --color-blue-50: #97a0c0;
   --color-blue-200: #8892b0;
   --color-blue-300: #636b85;
   --color-blue-400: #3d4459;
