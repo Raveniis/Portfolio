@@ -3,10 +3,11 @@ import navigationLinks from '../../data/navigationLinks';
 import { MaterialModules } from '../../../modules/module';
 import { Subscription } from 'rxjs';
 import { ScrollView } from '../../services/scroll-view.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
-  imports: [MaterialModules],
+  imports: [MaterialModules, CommonModule],
   templateUrl: './sidebar.html',
   styleUrl: './sidebar.scss',
 })

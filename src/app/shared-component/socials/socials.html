@@ -1,11 +1,17 @@
 <div class="flex {{ iconGap }}" [ngClass]="isResponsive ? 'justify-center sm:justify-start' : ''">
   @for (social of socials; track $index) {
     <tooltip [matTooltip]="social.name" matTooltipPosition="below">
-      <a [href]="social.url" target="_blank">
-        <button mat-icon-button class="flex! justify-center! items-center!">
+      @if (social.type === 'link') {
+        <a [href]="social.url" target="_blank">
+          <button mat-icon-button class="flex! justify-center! items-center!">
+            <span [class]="social.icon + ' ' + iconSize" [ngClass]="isColorFixed ? 'text-white' : 'text-black-200 dark:text-white'"></span>
+          </button>
+        </a>
+      } @else {
+        <button mat-icon-button class="flex! justify-center! items-center!" (click)="copyOnClick(social.text ? social.text : '')">
           <span [class]="social.icon + ' ' + iconSize" [ngClass]="isColorFixed ? 'text-white' : 'text-black-200 dark:text-white'"></span>
         </button>
-      </a>
+      }
     </tooltip>
   }
 </div>

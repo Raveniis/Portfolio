@@ -2,7 +2,8 @@
   @for (link of navigationLinks; track $index) {
     <a
       [href]="link.link + link.fragment"
-      class="text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white ease-in-out duration-200"
+      class="px-2 text-black-200 dark:text-gray-200 text-lg hover:text-blue-300 dark:hover:text-white hover:translate-x-2 transition-all ease-in-out duration-200"
+      [ngClass]="{ 'border-l-2 border-blue-300 font-medium translate-x-0!': link.id === activeSection }"
       (click)="toggleSidenav()"
       >{{ link.label }}</a
     >
