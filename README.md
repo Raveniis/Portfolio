@@ -64,4 +64,4 @@ migration to here
 
 update GH pages
 
-npx ngh --dir=dist/portfolio/browser --branch=gh-pages
+npx angular-cli-ghpages --dir=dist/portfolio/browser --branch=gh-pages
