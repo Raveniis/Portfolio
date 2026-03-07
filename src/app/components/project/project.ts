@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './project.scss',
 })
 export class Project {
-
+  ngAfterViewInit() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }

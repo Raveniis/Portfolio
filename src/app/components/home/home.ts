@@ -27,7 +27,7 @@ export class Home {
           }
         });
       },
-      { threshold: 0.2 },
+      { threshold: 0.4 },
     );
 
     this.sections.forEach((section) => {

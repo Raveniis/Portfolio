@@ -32,8 +32,12 @@ export class Header {
 
   ngAfterViewInit() {
     this.subscription = this.scrollViewService.currentSection$.subscribe((currentSection) => {
-      console.log('Current section:', currentSection);
       this.activeSection = currentSection;
+      if (!currentSection) {
+        this.highlightActiveLink();
+        this.activeIndicatorStyle = { ...this.activeIndicatorStyle, width: 0 };
+        return;
+      }
       this.highlightActiveLink();
     });
 
@@ -45,7 +49,6 @@ export class Header {
 
     if (!activeElement) return;
 
-    
     const containerXRelative = this.navigationContainer.nativeElement.getBoundingClientRect().left;
     const dimensions = activeElement.nativeElement.getBoundingClientRect();
     this.activeIndicatorStyle = {
