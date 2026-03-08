@@ -12,8 +12,9 @@ import { TrackSectionDirective } from '../../../directives/track-section';
   styleUrl: './hero.scss',
 })
 export class Hero {
-  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
 
+  introduction = `Hi! I'm an aspiring Full-Stack Web Developer who enjoys building web applications while continuously learning new technologies to be incorporated in the application. I have experience in using Angular and Laravel Framework in created a web application. I have also experience using React Native and MERN stack in creating a full web and mobile application. I enjoy building applications, learning new tools, and incorporating solid architecture to build something that would actually scale. I'm eager to grow my skills and career as a Full Stack Developer.`;
   get trackElement() {
     return this.section?.el.nativeElement;
   }
