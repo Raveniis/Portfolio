@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
-import { MatButtonModule } from "@angular/material/button";
-import { MaterialModules } from "../../../modules/module";
+import { MatButtonModule } from '@angular/material/button';
+import { MaterialModules } from '../../../modules/module';
 import { SafeUrlPipe } from '../../pipes/safe-url-pipe';
 
 @Component({
@@ -12,9 +12,7 @@ import { SafeUrlPipe } from '../../pipes/safe-url-pipe';
 })
 export class DocumentViewerModal {
   data = inject(MAT_DIALOG_DATA);
-  constructor(private dialogRef: MatDialogRef<DocumentViewerModal>) {
-
-  }
+  constructor(private dialogRef: MatDialogRef<DocumentViewerModal>) {}
 
   ngOnInit() {
     console.log(this.data);

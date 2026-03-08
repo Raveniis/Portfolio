@@ -7,6 +7,9 @@ import { Sidebar } from './shared-component/sidebar/sidebar';
 import { Subscription, filter } from 'rxjs';
 import { Router } from '@angular/router';
 import { ScrollView } from './services/scroll-view.service';
+import { environment } from '../environments/environment';
+import { MaintenanceModal } from './utils-comoponents/maintenance-modal/maintenance-modal';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Header, Footer, MaterialModules, Sidebar],
@@ -15,7 +18,10 @@ import { ScrollView } from './services/scroll-view.service';
 })
 export class App {
   @ViewChild('drawerContent', { read: ElementRef }) container!: ElementRef;
+
   router = inject(Router);
+  dialog = inject(MatDialog);
+
   scrollViewService = inject(ScrollView);
   scrollTop = 0;
   hideNav = false;
@@ -23,6 +29,21 @@ export class App {
   private subscription!: Subscription;
 
   ngAfterViewInit() {
+    if (environment.maintenance) {
+      const isMaintenanceDialogShown = sessionStorage.getItem('isMaintenanceDialogShown');
+      if (!isMaintenanceDialogShown || !(isMaintenanceDialogShown === 'true')) {
+        this.dialog.open(MaintenanceModal, {
+          data: {
+            title: 'Under development',
+            message: `This website is still under development. Items/information found inside are all subject to changes and improvements. I'm open to suggestions/feedbacks to
+                    further improve this website through my contacts found in the footer`,
+          },
+        });
+
+        sessionStorage.setItem('isMaintenanceDialogShown', 'true');
+      }
+    }
+
     this.subscription = this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe(() => {
       const tree = this.router.parseUrl(this.router.url);
       if (!tree.fragment) {
