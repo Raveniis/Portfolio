@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="emailForm" class="flex flex-wrap gap-4">
+      <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="e.g., John Doe" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" placeholder="e.g., john@gmail.com" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" floatLabel="always" class="flex-2 basis-64">
+        <mat-label>Message</mat-label>
+        <input #message matInput formControlName="message" placeholder="Aa..." />
+        <mat-hint align="end"> {{ message.value.length }} / 256</mat-hint>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>

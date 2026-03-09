@@ -5,10 +5,11 @@ import { Skills } from './skills/skills';
 import { EducationComponent } from './education/education';
 import { ProjectOverview } from './project-overview/project-overview';
 import { ScrollView } from '../../services/scroll-view.service';
+import { ContactForm } from '../../utils-comoponents/contact-form/contact-form';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, Experience, Skills, EducationComponent, ProjectOverview],
+  imports: [Hero, Experience, Skills, EducationComponent, ProjectOverview, ContactForm],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
