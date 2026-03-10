@@ -1,19 +1,29 @@
-<mat-card>
+<mat-card class="max-w3xl">
   <mat-card-content>
-    <form [formGroup]="emailForm" class="flex flex-wrap gap-4">
-      <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
-        <mat-label>Name</mat-label>
-        <input matInput formControlName="name" placeholder="e.g., John Doe" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" placeholder="e.g., john@gmail.com" />
-      </mat-form-field>
-      <mat-form-field appearance="outline" floatLabel="always" class="flex-2 basis-64">
-        <mat-label>Message</mat-label>
-        <input #message matInput formControlName="message" placeholder="Aa..." />
-        <mat-hint align="end"> {{ message.value.length }} / 256</mat-hint>
-      </mat-form-field>
+    <form [formGroup]="emailForm" (submit)="onSubmit()">
+      <div class="flex flex-wrap gap-4">
+        <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name" placeholder="e.g., John Doe" maxlength="64" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" placeholder="e.g., john@gmail.com" />
+        </mat-form-field>
+        <mat-form-field appearance="outline" floatLabel="always" class="flex-2 basis-full">
+          <mat-label>Message</mat-label>
+          <textarea #message matInput formControlName="message" placeholder="Aa..." rows="3" maxlength="256"> </textarea>
+          <mat-hint align="end"> {{ message.value.length }} / 256</mat-hint>
+        </mat-form-field>
+        <div class="flex flex-1 basis-full justify-center">
+          <re-captcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY" [theme]="theme"></re-captcha>
+        </div>
+      </div>
+      <div class="pt-8">
+        <div class="ml-auto w-fit" matTooltip="Fill all required fields (*) to submit the form" [matTooltipDisabled]="emailForm.valid">
+          <button [disabled]="emailForm.invalid" matButton="filled" type="submit">Send</button>
+        </div>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>
