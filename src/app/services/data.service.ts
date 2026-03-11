@@ -9,7 +9,7 @@ type RequestType = 'GET' | 'POST';
 })
 export class DataService {
   private http = inject(HttpClient);
-  apiUrl: string = environment.apiUrl;
+  private apiUrl: string = environment.apiUrl;
 
   public fetchData(type: RequestType, endpoint: string, params: string = '', payload: object = {}) {
     switch (type) {

@@ -1,7 +1,8 @@
-<mat-card class="max-w3xl">
-  <mat-card-content>
-    <form [formGroup]="emailForm" (submit)="onSubmit()">
-      <div class="flex flex-wrap gap-4">
+<mat-card class="max-w-3xl">
+  <mat-card-content class="">
+    <h3 class="text-center font-medium text-4xl py-12 uppercase tracking-wider">Contact Me</h3>
+    <form [formGroup]="emailForm" (submit)="onSubmit()" class="sm:px-16 pb-8">
+      <div class="flex gap-4 flex-wrap">
         <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
           <mat-label>Name</mat-label>
           <input matInput formControlName="name" placeholder="e.g., John Doe" maxlength="64" />
@@ -9,21 +10,58 @@
         <mat-form-field appearance="outline" floatLabel="always" class="flex-1 basis-32">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" placeholder="e.g., john@gmail.com" />
+          @if (emailForm.get('email')?.hasError('required')) {
+            <mat-error color="warning">Email field is required.</mat-error>
+          } @else if (emailForm.get('email')?.hasError('email')) {
+            <mat-error color="warning">Invalid email format.</mat-error>
+          }
         </mat-form-field>
         <mat-form-field appearance="outline" floatLabel="always" class="flex-2 basis-full">
           <mat-label>Message</mat-label>
           <textarea #message matInput formControlName="message" placeholder="Aa..." rows="3" maxlength="256"> </textarea>
+          @if (emailForm.get('message')?.hasError('required')) {
+            <mat-error color="warning">Message field is required.</mat-error>
+          }
           <mat-hint align="end"> {{ message.value.length }} / 256</mat-hint>
         </mat-form-field>
         <div class="flex flex-1 basis-full justify-center">
-          <re-captcha (resolved)="resolved($event)" siteKey="YOUR_SITE_KEY" [theme]="theme"></re-captcha>
+          @if (showRecaptcha) {
+            <re-captcha #recaptcha formControlName="recaptcha" [siteKey]="siteKey" [theme]="theme"></re-captcha>
+          }
         </div>
       </div>
       <div class="pt-8">
         <div class="ml-auto w-fit" matTooltip="Fill all required fields (*) to submit the form" [matTooltipDisabled]="emailForm.valid">
-          <button [disabled]="emailForm.invalid" matButton="filled" type="submit">Send</button>
+          <button [disabled]="emailForm.invalid" matButton="filled" type="submit">
+            @if (!isSubmitting) {
+              Send
+            } @else {
+              <mat-spinner strokeWidth="3" diameter="20" mode="indeterminate" />
+            }
+          </button>
         </div>
       </div>
     </form>
+    <mat-divider />
+    <div class="flex flex-col items-center gap-2 py-8">
+      <p>or</p>
+      <p>
+        Email me through:
+        <a
+          class="ml-1 underline text-blue-300 dark:text-blue-200 hover:text-blue-500 dark:hover:text-blue-100 transition-colors duration-200"
+          href="mailto:ravenlegarde@gmail.com"
+          target="_blank"
+          >ravenlegarde23@gmail.com</a
+        >
+      </p>
+      <p>
+        <span
+          class="ml-1 text-blue-300 dark:text-blue-200 hover:text-blue-500 dark:hover:text-blue-100 transition-colors duration-200 cursor-pointer"
+          (click)="copyEmail('ravenlegarde23@gmail.com')"
+          >click here</span
+        >
+        to copy the email address above
+      </p>
+    </div>
   </mat-card-content>
 </mat-card>

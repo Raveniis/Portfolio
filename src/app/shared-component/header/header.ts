@@ -4,6 +4,7 @@ import navigationLinks from '../../data/navigationLinks';
 import { ScrollView } from '../../services/scroll-view.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { AppTheme } from '../../services/app-theme.service';
 
 @Component({
   selector: 'app-header',
@@ -28,6 +29,7 @@ export class Header {
   constructor(
     private scrollViewService: ScrollView,
     private cdr: ChangeDetectorRef,
+    private appTheme: AppTheme,
   ) {}
 
   ngAfterViewInit() {
@@ -84,6 +86,9 @@ export class Header {
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
     document.body.classList.toggle('dark', this.darkMode);
-    sessionStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+
+    const currentTheme = this.darkMode ? 'dark' : 'light';
+    sessionStorage.setItem('theme', currentTheme);
+    this.appTheme.setTheme(currentTheme);
   }
 }

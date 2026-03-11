@@ -1,6 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { Clipboard } from '@angular/cdk/clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal, { SweetAlertIcon } from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root',
@@ -25,5 +26,17 @@ export class Utils {
     if (!onDismiss) return;
 
     snackbarRef.afterDismissed().subscribe((res) => onDismiss());
+  }
+
+  openAlert(title: string, text: string, icon: SweetAlertIcon) {
+    Swal.fire({
+      title,
+      text,
+      icon,
+      timer: 2500,
+      showCloseButton: false,
+      showCancelButton: false,
+      showConfirmButton: false,
+    });
   }
 }
