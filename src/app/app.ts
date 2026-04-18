@@ -8,7 +8,7 @@ import { Subscription, filter } from 'rxjs';
 import { Router } from '@angular/router';
 import { ScrollView } from './services/scroll-view.service';
 import { environment } from '../environments/environment';
-import { MaintenanceModal } from './utils-comoponents/maintenance-modal/maintenance-modal';
+import { MaintenanceModal } from './utils-components/maintenance-modal/maintenance-modal';
 import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-root',

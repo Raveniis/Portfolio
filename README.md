@@ -63,5 +63,5 @@ migration to here
 //////////////////////
 
 update GH pages
-
-npx angular-cli-ghpages --dir=dist/portfolio/browser --branch=gh-pages
+ng build --configuration=production --base-href=https://raveniis.github.io/Portfolio/
+npx angular-cli-ghpages --dir=dist/Portfolio/browser --branch=gh-pages

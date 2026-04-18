@@ -1,35 +1,30 @@
 <section id="projects" class="flex flex-col gap-8" trackSection>
   <h2 class="text-center font-medium text-5xl uppercase tracking-wider">Projects</h2>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
-    <mat-card class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
-      <mat-card-header class="pb-4!">
-        <mat-card-title class="text-black-200! dark:text-gray-200!">Sample Title</mat-card-title>
-        <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">Sample Company | June 2023 - September 2023</mat-card-subtitle>
-      </mat-card-header>
-      <img matCardImage class="max-h-48 object-cover" src="./pictures/Forger.webp" />
-      <mat-card-content class="text-black-200! dark:text-gray-200! pt-4!">
-        Vivamus vel neque et justo finibus imperdiet eu eu magna. Nulla suscipit sagittis fermentum. Nulla vitae sem a lectus elementum volutpat nec vitae
-        libero. Duis a sapien placerat, sollicitudin turpis nec, luctus est. Phasellus auctor malesuada sem, vel pretium erat sollicitudin ac. Nunc commodo
-        placerat dui et ultricies. In id posuere est, suscipit condimentum velit.
-      </mat-card-content>
-      <mat-card-footer class="p-4">
+    @for (project of projects; track $index) {
+      <mat-card class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
+        <mat-card-header class="pb-4!">
+          <mat-card-title class="text-black-200! dark:text-gray-200!">{{ project.title }}</mat-card-title>
+          <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">{{ project.sub_title }}</mat-card-subtitle>
+        </mat-card-header>
+        <img matCardImage class="max-h-48 object-cover" src="./pictures/Forger.webp" />
+        <mat-card-content class="text-black-200! dark:text-gray-200! pt-4!">{{ project.description }} </mat-card-content>
+        <!-- <mat-card-footer class="p-4">
         <button matButton [routerLink]="'projects'">View Details >></button>
-      </mat-card-footer>
-    </mat-card>
-    <mat-card class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
-      <mat-card-header class="pb-4!">
-        <mat-card-title class="text-black-200! dark:text-gray-200!">Sample Title</mat-card-title>
-        <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">Sample Company | June 2023 - September 2023</mat-card-subtitle>
-      </mat-card-header>
-      <img matCardImage class="max-h-48 object-cover" src="./pictures/Forger.webp" />
-      <mat-card-content class="text-black-200! dark:text-gray-200! pt-4!">
-        Vivamus vel neque et justo finibus imperdiet eu eu magna. Nulla suscipit sagittis fermentum. Nulla vitae sem a lectus elementum volutpat nec vitae
-        libero. Duis a sapien placerat, sollicitudin turpis nec, luctus est. Phasellus auctor malesuada sem, vel pretium erat sollicitudin ac. Nunc commodo
-        placerat dui et ultricies. In id posuere est, suscipit condimentum velit.
-      </mat-card-content>
-      <mat-card-footer class="p-4">
-        <button matButton [routerLink]="'projects'">View Details >></button>
-      </mat-card-footer>
-    </mat-card>
+      </mat-card-footer> -->
+        <mat-card-footer class="p-4">
+          <mat-chip-set>
+            @for (tech of project.technologies; track $index) {
+              <mat-chip>
+                @if (tech.icon) {
+                  <img matChipAvatar [src]="tech.icon" [alt]="tech.name" />
+                }
+                {{ tech.name }}</mat-chip
+              >
+            }
+          </mat-chip-set>
+        </mat-card-footer>
+      </mat-card>
+    }
   </div>
 </section>

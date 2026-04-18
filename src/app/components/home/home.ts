@@ -5,7 +5,7 @@ import { Skills } from './skills/skills';
 import { EducationComponent } from './education/education';
 import { ProjectOverview } from './project-overview/project-overview';
 import { ScrollView } from '../../services/scroll-view.service';
-import { ContactForm } from '../../utils-comoponents/contact-form/contact-form';
+import { ContactForm } from '../../utils-components/contact-form/contact-form';
 
 @Component({
   selector: 'app-home',
