@@ -10,6 +10,7 @@ import { ScrollView } from './services/scroll-view.service';
 import { environment } from '../environments/environment';
 import { MaintenanceModal } from './utils-components/maintenance-modal/maintenance-modal';
 import { MatDialog } from '@angular/material/dialog';
+import { AppTheme } from './services/app-theme.service';
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, Header, Footer, MaterialModules, Sidebar],
@@ -19,14 +20,19 @@ import { MatDialog } from '@angular/material/dialog';
 export class App {
   @ViewChild('drawerContent', { read: ElementRef }) container!: ElementRef;
 
-  router = inject(Router);
-  dialog = inject(MatDialog);
+  private router = inject(Router);
+  private dialog = inject(MatDialog);
+  private themeService = inject(AppTheme);
 
   scrollViewService = inject(ScrollView);
   scrollTop = 0;
   hideNav = false;
   private scrollThreshold: number = 100;
   private subscription!: Subscription;
+
+  ngOnInit() {
+    this.themeService.initializeCurrentTheme();
+  }
 
   ngAfterViewInit() {
     if (environment.maintenance) {

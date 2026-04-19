@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, ElementRef, EventEmitter, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
 import navigationLinks from '../../data/navigationLinks';
 import { ScrollView } from '../../services/scroll-view.service';
@@ -17,6 +17,8 @@ export class Header {
   @ViewChild('navigation') navigationContainer!: ElementRef;
   @ViewChildren('links') navigationElements!: QueryList<ElementRef>;
 
+  private themeService = inject(AppTheme);
+
   navigationLinks = navigationLinks;
   activeSection: string = '';
   subscription: Subscription | any;
@@ -30,7 +32,9 @@ export class Header {
     private scrollViewService: ScrollView,
     private cdr: ChangeDetectorRef,
     private appTheme: AppTheme,
-  ) {}
+  ) {
+    this.darkMode = this.themeService.getSavedTheme() ? this.themeService.getSavedTheme() === 'dark' : false;
+  }
 
   ngAfterViewInit() {
     this.subscription = this.scrollViewService.currentSection$.subscribe((currentSection) => {
@@ -63,18 +67,6 @@ export class Header {
     });
   }
 
-  ngOnInit() {
-    const savedTheme = sessionStorage.getItem('theme');
-
-    if (savedTheme === 'dark') {
-      this.darkMode = true;
-      document.body.classList.add('dark');
-    } else if (savedTheme === 'light') {
-      this.darkMode = false;
-      document.body.classList.remove('dark');
-    }
-  }
-
   ngOnDestroy() {
     this.subscription.unsubscribe();
   }
@@ -85,10 +77,6 @@ export class Header {
 
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
-    document.body.classList.toggle('dark', this.darkMode);
-
-    const currentTheme = this.darkMode ? 'dark' : 'light';
-    sessionStorage.setItem('theme', currentTheme);
-    this.appTheme.setTheme(currentTheme);
+    this.appTheme.setTheme(this.darkMode);
   }
 }

@@ -5,9 +5,9 @@ import { RecaptchaComponent, RecaptchaFormsModule, RecaptchaModule } from 'ng-re
 import { environment } from '../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { AppTheme } from '../../services/app-theme.service';
-import { DataService } from '../../services/data.service';
 import { FormGroupDirective } from '@angular/forms';
-import { Utils } from '../../services/utils';
+import { Utils } from '../../utils/utils';
+import { MailService } from '../../services/email.service';
 
 @Component({
   selector: 'app-contact-form',
@@ -22,8 +22,8 @@ export class ContactForm {
   private fb = inject(FormBuilder);
   private themeService = inject(AppTheme);
   private cdr = inject(ChangeDetectorRef);
-  private ds = inject(DataService);
   private utils = inject(Utils);
+  private mailService = inject(MailService);
 
   emailForm!: FormGroup;
   theme: ReCaptchaV2.Theme;
@@ -70,7 +70,7 @@ export class ContactForm {
     this.isSubmitting = true;
 
     const payload = this.emailForm.value;
-    this.ds.fetchData('POST', 'email/send', '', payload).subscribe({
+    this.mailService.sendEmail(payload).subscribe({
       next: (response) => {
         this.emailForm.reset();
         this.formDirective.resetForm();
@@ -78,7 +78,9 @@ export class ContactForm {
         this.utils.openAlert('Sent!', 'Email has been sent!', 'success');
         console.log(response);
       },
-      error: (err) => {},
+      error: (err) => {
+        this.isSubmitting = false;
+      },
       complete: () => {
         this.isSubmitting = false;
       },

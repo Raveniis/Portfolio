@@ -7,7 +7,6 @@ type RequestType = 'GET' | 'POST';
 @Injectable({
   providedIn: 'root',
 })
-
 export class Api {
   private http = inject(HttpClient);
   private apiUrl: string = environment.apiUrl;
@@ -15,10 +14,9 @@ export class Api {
   public fetchData(type: RequestType, endpoint: string, params: string = '', payload: object = {}) {
     switch (type) {
       case 'GET':
-        return this.http.get<any>(this.apiUrl + endpoint + params);
+        return this.http.get<any>(this.apiUrl + endpoint + params, { withCredentials: true });
       case 'POST':
-        return this.http.post<any>(this.apiUrl + endpoint + params, { payload });
+        return this.http.post<any>(this.apiUrl + endpoint + params, { payload }, { withCredentials: true });
     }
   }
 }
-  

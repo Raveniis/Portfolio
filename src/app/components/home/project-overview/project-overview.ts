@@ -43,7 +43,6 @@ export class ProjectOverview {
         placerat dui et ultricies. In id posuere est, suscipit condimentum velit.`,
       technologies: [
         { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-plain.svg', name: 'Angular' },
-        { icon: './icons/Tailwind.svg', name: 'Tailwind' },
         { icon: './icons/Laravel.png', name: 'Laravel' },
         {
           icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg',

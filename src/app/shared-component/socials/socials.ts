@@ -2,7 +2,7 @@ import { Component, inject, Input } from '@angular/core';
 import { MatTooltip } from '@angular/material/tooltip';
 import { MaterialModules } from '../../../modules/module';
 import { CommonModule } from '@angular/common';
-import { Utils } from '../../services/utils';
+import { Utils } from '../../utils/utils';
 import socials from '../../data/socials';
 @Component({
   selector: 'app-socials',
