@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
 import navigationLinks from '../../data/navigationLinks';
-import { ScrollView } from '../../services/scroll-view.service';
+import { ScrollViewService } from '../../services/scroll-view.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { AppTheme } from '../../services/app-theme.service';
@@ -18,6 +18,8 @@ export class Header {
   @ViewChildren('links') navigationElements!: QueryList<ElementRef>;
 
   private themeService = inject(AppTheme);
+  private scrollViewService = inject(ScrollViewService);
+  private cdr = inject(ChangeDetectorRef);
 
   navigationLinks = navigationLinks;
   activeSection: string = '';
@@ -28,11 +30,7 @@ export class Header {
     width: 0,
   };
 
-  constructor(
-    private scrollViewService: ScrollView,
-    private cdr: ChangeDetectorRef,
-    private appTheme: AppTheme,
-  ) {
+  constructor() {
     this.darkMode = this.themeService.getSavedTheme() ? this.themeService.getSavedTheme() === 'dark' : false;
   }
 
@@ -53,14 +51,19 @@ export class Header {
   private highlightActiveLink() {
     const activeElement = this.navigationElements.find((el) => el.nativeElement.dataset.id === this.activeSection);
 
-    if (!activeElement) return;
-
-    const containerXRelative = this.navigationContainer.nativeElement.getBoundingClientRect().left;
-    const dimensions = activeElement.nativeElement.getBoundingClientRect();
-    this.activeIndicatorStyle = {
-      left: dimensions.left - containerXRelative,
-      width: dimensions.width,
-    };
+    if (!activeElement) {
+      this.activeIndicatorStyle = {
+        ...this.activeIndicatorStyle,
+        width: 0,
+      };
+    } else {
+      const containerXRelative = this.navigationContainer.nativeElement.getBoundingClientRect().left;
+      const dimensions = activeElement.nativeElement.getBoundingClientRect();
+      this.activeIndicatorStyle = {
+        left: dimensions.left - containerXRelative,
+        width: dimensions.width,
+      };
+    }
 
     setTimeout(() => {
       this.cdr.detectChanges();
@@ -77,6 +80,6 @@ export class Header {
 
   toggleDarkMode() {
     this.darkMode = !this.darkMode;
-    this.appTheme.setTheme(this.darkMode);
+    this.themeService.setTheme(this.darkMode);
   }
 }

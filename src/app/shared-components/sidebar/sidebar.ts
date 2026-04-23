@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import navigationLinks from '../../data/navigationLinks';
 import { MaterialModules } from '../../../modules/module';
 import { Subscription } from 'rxjs';
-import { ScrollView } from '../../services/scroll-view.service';
+import { ScrollViewService } from '../../services/scroll-view.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,11 +13,14 @@ import { CommonModule } from '@angular/common';
 })
 export class Sidebar {
   @Output() onToggleSidenav = new EventEmitter<void>();
+  private scrollViewService = inject(ScrollViewService);
+
+  private subscription: Subscription;
+
   navigationLinks = navigationLinks;
   activeSection: string = '';
-  subscription: Subscription;
 
-  constructor(private scrollViewService: ScrollView) {
+  constructor() {
     this.subscription = this.scrollViewService.currentSection$.subscribe((currentSection) => {
       this.activeSection = currentSection;
     });

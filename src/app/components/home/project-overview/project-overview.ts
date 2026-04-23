@@ -1,7 +1,8 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
 import { RouterLink } from '@angular/router';
 import { TrackSectionDirective } from '../../../directives/track-section';
+import { ScrollViewService } from '../../../services/scroll-view.service';
 
 interface Technology {
   icon: string | null;
@@ -21,8 +22,17 @@ interface Project {
 })
 export class ProjectOverview {
   @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
+  private scrollService = inject(ScrollViewService)
 
-  projects: Project[] = [
+  get trackElement() {
+    return this.section?.el.nativeElement;
+  }
+  
+  ngAfterViewInit() {
+    this.scrollService.observeElement(this.trackElement);
+  }
+
+  protected projects: Project[] = [
     {
       title: 'Portfolio',
       sub_title: 'Personal Project',
@@ -51,7 +61,4 @@ export class ProjectOverview {
       ],
     },
   ];
-  get trackElement() {
-    return this.section?.el.nativeElement;
-  }
 }

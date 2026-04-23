@@ -1,6 +1,7 @@
-import { Component, signal, ViewChild } from '@angular/core';
+import { Component, inject, ViewChild } from '@angular/core';
 import skills from '../../../data/skills';
 import { TrackSectionDirective } from '../../../directives/track-section';
+import { ScrollViewService } from '../../../services/scroll-view.service';
 
 @Component({
   selector: 'app-skills',
@@ -8,12 +9,22 @@ import { TrackSectionDirective } from '../../../directives/track-section';
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })
-export class Skills {
-  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective
+export class SkillsComponent {
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
+  private scrollService = inject(ScrollViewService);
+  private observer!: IntersectionObserver;
 
   get trackElement() {
     return this.section?.el.nativeElement;
   }
-  
-  skills = signal<Skill[]>(skills);
+
+  ngAfterViewInit() {
+    this.scrollService.observeElement(this.trackElement);
+  }
+
+  ngOnDestroy() {
+    if (this.observer) this.observer.disconnect();
+  }
+
+  protected skills: Skill[] = skills;
 }

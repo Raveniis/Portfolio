@@ -1,14 +1,14 @@
 import { Component, ElementRef, inject, signal, ViewChild } from '@angular/core';
 import { NavigationEnd, RouterOutlet } from '@angular/router';
-import { Header } from './shared-component/header/header';
-import { Footer } from './shared-component/footer/footer';
+import { Header } from './shared-components/header/header';
+import { Footer } from './shared-components/footer/footer';
 import { MaterialModules } from '../modules/module';
-import { Sidebar } from './shared-component/sidebar/sidebar';
+import { Sidebar } from './shared-components/sidebar/sidebar';
 import { Subscription, filter } from 'rxjs';
 import { Router } from '@angular/router';
-import { ScrollView } from './services/scroll-view.service';
+import { ScrollViewService } from './services/scroll-view.service';
 import { environment } from '../environments/environment';
-import { MaintenanceModal } from './utils-components/maintenance-modal/maintenance-modal';
+import { MaintenanceModal } from './modals/maintenance-modal/maintenance-modal';
 import { MatDialog } from '@angular/material/dialog';
 import { AppTheme } from './services/app-theme.service';
 @Component({
@@ -23,12 +23,13 @@ export class App {
   private router = inject(Router);
   private dialog = inject(MatDialog);
   private themeService = inject(AppTheme);
+  private scrollViewService = inject(ScrollViewService);
 
-  scrollViewService = inject(ScrollView);
-  scrollTop = 0;
-  hideNav = false;
   private scrollThreshold: number = 100;
   private subscription!: Subscription;
+
+  scrollTop = 0;
+  hideNav = false;
 
   ngOnInit() {
     this.themeService.initializeCurrentTheme();

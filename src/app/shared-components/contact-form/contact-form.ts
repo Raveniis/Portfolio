@@ -8,22 +8,29 @@ import { AppTheme } from '../../services/app-theme.service';
 import { FormGroupDirective } from '@angular/forms';
 import { Utils } from '../../utils/utils';
 import { MailService } from '../../services/email.service';
+import { TrackSectionDirective } from '../../directives/track-section';
+import { ScrollViewService } from '../../services/scroll-view.service';
 
 @Component({
   selector: 'app-contact-form',
-  imports: [MaterialModules, ReactiveFormsModule, RecaptchaModule, RecaptchaFormsModule],
+  imports: [MaterialModules, ReactiveFormsModule, RecaptchaModule, RecaptchaFormsModule, TrackSectionDirective],
   templateUrl: './contact-form.html',
   styleUrl: './contact-form.scss',
 })
 export class ContactForm {
   @ViewChild(FormGroupDirective) formDirective!: FormGroupDirective;
   @ViewChild('recaptcha') recaptcha!: RecaptchaComponent;
-
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
+  private scrollService = inject(ScrollViewService);
   private fb = inject(FormBuilder);
   private themeService = inject(AppTheme);
   private cdr = inject(ChangeDetectorRef);
   private utils = inject(Utils);
   private mailService = inject(MailService);
+
+  get trackElement() {
+    return this.section?.el.nativeElement;
+  }
 
   emailForm!: FormGroup;
   theme: ReCaptchaV2.Theme;
@@ -52,6 +59,10 @@ export class ContactForm {
       this.cdr.detectChanges();
       this.showRecaptcha = true;
     });
+  }
+
+  ngAfterViewInit() {
+    this.scrollService.observeElement(this.trackElement);
   }
 
   ngOnDestroy() {

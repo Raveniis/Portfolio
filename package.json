@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build --configuration production",
+    "dev": "ng serve",
+    "dev:prod": "ng serve --configuration production -o",
+    "build": "ng build --configuration=production --base-href=https://raveniis.github.io/Portfolio/",
+    "update:pages": "npm run build && npx angular-cli-ghpages --dir=dist/Portfolio/browser --branch=gh-pages",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

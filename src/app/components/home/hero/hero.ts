@@ -1,9 +1,10 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
-import { DocumentViewerModal } from '../../../utils-components/document-viewer-modal/document-viewer-modal';
+import { DocumentViewerModal } from '../../../modals/document-viewer-modal/document-viewer-modal';
 import { MatDialog } from '@angular/material/dialog';
-import { Socials } from '../../../shared-component/socials/socials';
+import { Socials } from '../../../shared-components/socials/socials';
 import { TrackSectionDirective } from '../../../directives/track-section';
+import { ScrollViewService } from '../../../services/scroll-view.service';
 
 @Component({
   selector: 'app-hero',
@@ -13,15 +14,19 @@ import { TrackSectionDirective } from '../../../directives/track-section';
 })
 export class Hero {
   @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
-
-  // introduction = `Hi! I'm an aspiring Full-Stack Web Developer who enjoys building web applications while continuously learning new technologies to be incorporated in the application. I have experience in using Angular and Laravel Framework in created a web application. I have also experience using React Native and MERN stack in creating a full web and mobile application. I enjoy building applications, learning new tools, and incorporating solid architecture to build something that would actually scale. I'm eager to grow my skills and career as a Full Stack Developer.`;
-  introduction = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat enim ut nulla blandit, vel vehicula nibh dignissim. Fusce non varius dui, eget ullamcorper orci. Nullam aliquam sit amet orci quis tempus. Morbi ut viverra velit. Donec sed neque congue, egestas tellus nec, egestas mauris. Curabitur sed ornare diam. Morbi dui urna, varius vel est et, hendrerit aliquet felis. Donec eget condimentum ipsum. Etiam elementum lectus quis libero porttitor bibendum. Vestibulum sed metus lectus. `;
+  private dialog = inject(MatDialog);
+  private scrollService = inject(ScrollViewService);
 
   get trackElement() {
     return this.section?.el.nativeElement;
   }
+  
+  ngAfterViewInit() {
+    this.scrollService.observeElement(this.trackElement);
+  }
 
-  readonly dialog = inject(MatDialog);
+  // protected introduction = `Hi! I'm an aspiring Full-Stack Web Developer who enjoys building web applications while continuously learning new technologies to be incorporated in the application. I have experience in using Angular and Laravel Framework in created a web application. I have also experience using React Native and MERN stack in creating a full web and mobile application. I enjoy building applications, learning new tools, and incorporating solid architecture to build something that would actually scale. I'm eager to grow my skills and career as a Full Stack Developer.`;
+  protected introduction: string = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus consequat enim ut nulla blandit, vel vehicula nibh dignissim. Fusce non varius dui, eget ullamcorper orci. Nullam aliquam sit amet orci quis tempus. Morbi ut viverra velit. Donec sed neque congue, egestas tellus nec, egestas mauris. Curabitur sed ornare diam. Morbi dui urna, varius vel est et, hendrerit aliquet felis. Donec eget condimentum ipsum. Etiam elementum lectus quis libero porttitor bibendum. Vestibulum sed metus lectus. `;
 
   viewDocument() {
     this.dialog.open(DocumentViewerModal, {
