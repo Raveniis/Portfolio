@@ -1,6 +1,6 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
-import education from '../../../data/education';
+import education from '../../../data/education.data';
 import { TrackSectionDirective } from '../../../directives/track-section';
 import { ScrollViewService } from '../../../services/scroll-view.service';
 

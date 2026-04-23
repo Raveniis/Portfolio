@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, inject, Input, Output, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
-import navigationLinks from '../../data/navigationLinks';
+import navigationLinks from '../../data/navigationLinks.data';
 import { ScrollViewService } from '../../services/scroll-view.service';
 import { Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';

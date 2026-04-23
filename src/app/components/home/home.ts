@@ -1,5 +1,5 @@
 import { Component, inject, QueryList, ViewChildren } from '@angular/core';
-import { Hero } from './hero/hero';
+import { HeroComponent } from './hero/hero';
 import { ExperienceComponent } from './experience/experience';
 import { SkillsComponent } from './skills/skills';
 import { EducationComponent } from './education/education';
@@ -9,7 +9,7 @@ import { ContactForm } from '../../shared-components/contact-form/contact-form';
 
 @Component({
   selector: 'app-home',
-  imports: [Hero, ExperienceComponent, SkillsComponent, EducationComponent, ProjectOverview, ContactForm],
+  imports: [HeroComponent, ExperienceComponent, SkillsComponent, EducationComponent, ProjectOverview, ContactForm],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })

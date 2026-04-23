@@ -1,7 +1,7 @@
 import { Component, inject, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../../modules/module';
 import { TrackSectionDirective } from '../../../directives/track-section';
-import experiences from '../../../data/experience';
+import experiences from '../../../data/experience.data';
 import { CommonModule } from '@angular/common';
 import { ScrollViewService } from '../../../services/scroll-view.service';
 

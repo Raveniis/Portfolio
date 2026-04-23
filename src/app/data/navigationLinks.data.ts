@@ -1,4 +1,4 @@
-export const navigationLinks = [
+export const navigationLinks: NavigationItem[] = [
   { label: 'About', link: '', fragment: '#about', id: 'about' },
   { label: 'Skills', link: '', fragment: '#skills', id: 'skills' },
   { label: 'Experience', link: '', fragment: '#experience', id: 'experience' },

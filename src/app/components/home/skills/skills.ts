@@ -1,5 +1,5 @@
 import { Component, inject, ViewChild } from '@angular/core';
-import skills from '../../../data/skills';
+import skills from '../../../data/skills.data';
 import { TrackSectionDirective } from '../../../directives/track-section';
 import { ScrollViewService } from '../../../services/scroll-view.service';
 

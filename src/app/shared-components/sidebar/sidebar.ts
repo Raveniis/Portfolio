@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
-import navigationLinks from '../../data/navigationLinks';
+import navigationLinks from '../../data/navigationLinks.data';
 import { MaterialModules } from '../../../modules/module';
 import { Subscription } from 'rxjs';
 import { ScrollViewService } from '../../services/scroll-view.service';

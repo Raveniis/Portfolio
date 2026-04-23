@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Socials } from '../socials/socials';
-import navigationLinks from '../../data/navigationLinks';
+import navigationLinks from '../../data/navigationLinks.data';
 
 @Component({
   selector: 'app-footer',

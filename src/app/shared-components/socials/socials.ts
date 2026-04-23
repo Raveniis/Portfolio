@@ -3,7 +3,7 @@ import { MatTooltip } from '@angular/material/tooltip';
 import { MaterialModules } from '../../../modules/module';
 import { CommonModule } from '@angular/common';
 import { Utils } from '../../utils/utils';
-import socials from '../../data/socials';
+import socials from '../../data/socials.data';
 @Component({
   selector: 'app-socials',
   imports: [MatTooltip, MaterialModules, CommonModule],
