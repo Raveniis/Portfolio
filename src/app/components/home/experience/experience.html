@@ -4,13 +4,13 @@
     @for (experience of experiences; track $index) {
       <mat-card class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
         <mat-card-header>
-          <mat-card-title class="text-black-200! dark:text-gray-200!">{{ experience.Position }}</mat-card-title>
+          <mat-card-title>{{ experience.Position }}</mat-card-title>
           <mat-card-subtitle class="text-gray-500! dark:text-gray-400!"
             >{{ experience.Company }} | {{ experience.start_date | date: 'MMMM yyyy' }} –
             {{ experience.end_date === 'current' ? 'Current' : (experience.end_date | date: 'MMMM yyyy') }}</mat-card-subtitle
           >
         </mat-card-header>
-        <mat-card-content class="text-black-200! dark:text-gray-200! pt-4!">
+        <mat-card-content class="pt-4!">
           {{ experience.description }}
         </mat-card-content>
       </mat-card>

@@ -72,6 +72,15 @@ a {
   border-radius: 0;
 }
 
+//mat card custom styles 
+
+:not(.dark) mat-card {
+  background-color: white;
+}
+.mat-mdc-card-content {
+  line-height: 1.5rem;
+}
+
 .mat-mdc-card-header-text {
   width: 100%;
 }
@@ -80,15 +89,15 @@ a {
   height: 100vh;
 }
 
+mat-card-actions {
+  padding: 16px !important; /* adjust value as needed */
+}
+
 // @media (min-width: 640px) {
 //   .mat-drawer-container {
 //     height: 100vh;
 //   }
 // }
-
-mat-card-actions {
-  padding: 16px !important; /* adjust value as needed */
-}
 
 *::-webkit-scrollbar {
   width: 0.3rem;

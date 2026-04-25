@@ -3,15 +3,35 @@
     <tooltip [matTooltip]="social.name" matTooltipPosition="below">
       @if (social.type === 'link') {
         <a [href]="social.url" target="_blank">
-          <button mat-icon-button class="flex! justify-center! items-center!">
-            <span [class]="social.icon + ' ' + iconSize" [ngClass]="isColorFixed ? 'text-white' : 'text-black-200 dark:text-white'"></span>
-          </button>
+          <ng-container
+            *ngTemplateOutlet="
+              iconButtonTemplate;
+              context: {
+                social: social,
+                iconSize: iconSize,
+                isColorFixed: isColorFixed,
+              }
+            "
+          />
         </a>
       } @else {
-        <button mat-icon-button class="flex! justify-center! items-center!" (click)="copyOnClick(social.text ? social.text : '')">
-          <span [class]="social.icon + ' ' + iconSize" [ngClass]="isColorFixed ? 'text-white' : 'text-black-200 dark:text-white'"></span>
-        </button>
+        <ng-container
+          *ngTemplateOutlet="
+            iconButtonTemplate;
+            context: {
+              social: social,
+              iconSize: iconSize,
+              isColorFixed: isColorFixed,
+            }
+          "
+        />
       }
     </tooltip>
   }
 </div>
+
+<ng-template #iconButtonTemplate let-social="social" let-iconSize="iconSize" let-isColorFixed="isColorFixed">
+  <button mat-icon-button class="flex! justify-center! items-center!" (click)="copyOnClick(social.text ? social.text : '')">
+    <span [class]="social.icon + ' ' + iconSize" [ngClass]="isColorFixed ? 'text-white' : 'text-black-200 dark:text-white'"></span>
+  </button>
+</ng-template>

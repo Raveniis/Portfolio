@@ -6,5 +6,6 @@
     <app-header (onToggleSidenav)="drawer.toggle()" [hideNavBar]="hideNav" />
     <router-outlet />
     <app-footer />
+    <app-scroll-to-top-fab [hideFAB]="hideScrollToTopFAB" (onScrollToTop)="scrollToTop()" />
   </mat-drawer-content>
 </mat-drawer-container>

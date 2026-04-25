@@ -1,0 +1,11 @@
+<button
+  [ngClass]="{
+    'opacity-0 pointer-events-none': hideFAB,
+    'opacity-100 pointer-events-auto': !hideFAB,
+  }"
+  (click)="scrollToTop()"
+  matMiniFab
+  class="fixed! right-3 bottom-3 rounded-full! transition-all! duration-100!"
+>
+  <mat-icon>arrow_upward</mat-icon>
+</button>

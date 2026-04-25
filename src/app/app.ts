@@ -11,9 +11,10 @@ import { environment } from '../environments/environment';
 import { MaintenanceModal } from './modals/maintenance-modal/maintenance-modal';
 import { MatDialog } from '@angular/material/dialog';
 import { AppTheme } from './services/app-theme.service';
+import { ScrollToTopFAB } from './shared-components/scroll-to-top-fab/scroll-to-top-fab';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, Header, Footer, MaterialModules, Sidebar],
+  imports: [RouterOutlet, Header, Footer, MaterialModules, Sidebar, ScrollToTopFAB],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
@@ -26,10 +27,12 @@ export class App {
   private scrollViewService = inject(ScrollViewService);
 
   private scrollThreshold: number = 100;
+  private scrollToTopFABLevel: number = 500;
   private subscription!: Subscription;
 
-  scrollTop = 0;
-  hideNav = false;
+  scrollTop: number = 0;
+  hideNav: boolean = false;
+  hideScrollToTopFAB: boolean = true;
 
   ngOnInit() {
     this.themeService.initializeCurrentTheme();
@@ -66,6 +69,9 @@ export class App {
 
   onScroll(event: any) {
     const currentScroll = event.target.scrollTop;
+    console.log(currentScroll);
+
+    if (currentScroll < this.scrollToTopFABLevel) this.hideScrollToTopFAB = true;
 
     if (currentScroll === 0) {
       this.hideNav = false;
@@ -76,7 +82,18 @@ export class App {
       return;
     }
 
-    this.hideNav = this.scrollTop < currentScroll;
+    const hasScrolledDown = this.scrollTop < currentScroll;
+
+    if (currentScroll > this.scrollToTopFABLevel) {
+      this.hideScrollToTopFAB = hasScrolledDown;
+    }
+
+    this.hideNav = hasScrolledDown;
+
     this.scrollTop = currentScroll;
+  }
+
+  scrollToTop() {
+    this.container.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

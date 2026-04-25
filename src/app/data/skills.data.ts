@@ -58,6 +58,10 @@ const skills: Skill[] = [
     name: 'React Native',
   },
   {
+    src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg',
+    name: 'Node.js',
+  },
+  {
     src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg',
     name: 'Git and GitHub',
   },
