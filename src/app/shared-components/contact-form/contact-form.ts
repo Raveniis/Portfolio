@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, inject, ViewChild } from '@angular/core';
 import { MaterialModules } from '../../../modules/module';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RecaptchaComponent, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaComponent, RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha-2';
 import { environment } from '../../../environments/environment';
 import { Subscription } from 'rxjs';
 import { AppTheme } from '../../services/app-theme.service';
