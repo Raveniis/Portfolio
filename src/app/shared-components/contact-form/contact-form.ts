@@ -10,6 +10,8 @@ import { Utils } from '../../utils/utils';
 import { MailService } from '../../services/email.service';
 import { TrackSectionDirective } from '../../directives/track-section';
 import { ScrollViewService } from '../../services/scroll-view.service';
+import { MediaQueryService } from '../../services/media-query.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-contact-form',
@@ -27,6 +29,7 @@ export class ContactForm {
   private cdr = inject(ChangeDetectorRef);
   private utils = inject(Utils);
   private mailService = inject(MailService);
+  private mobileQueryService = inject(MediaQueryService)
 
   get trackElement() {
     return this.section?.el.nativeElement;
@@ -38,6 +41,7 @@ export class ContactForm {
   showRecaptcha: boolean = false;
   isSubmitting: boolean = false;
   subscription!: Subscription;
+  isMobile$ = this.mobileQueryService.isMobile$;
 
   constructor() {
     const storedTheme = sessionStorage.getItem('theme');
@@ -55,6 +59,8 @@ export class ContactForm {
     this.subscription = this.themeService.currentTheme$.subscribe((currentTheme) => {
       this.showRecaptcha = false;
       this.theme = currentTheme ? (currentTheme as ReCaptchaV2.Theme) : this.theme;
+
+      this.emailForm.get('recaptcha')?.reset();
 
       this.cdr.detectChanges();
       this.showRecaptcha = true;

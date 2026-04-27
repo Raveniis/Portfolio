@@ -7,7 +7,7 @@
           <mat-card-title>{{ project.title }}</mat-card-title>
           <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">{{ project.sub_title }}</mat-card-subtitle>
         </mat-card-header>
-        <img matCardImage class="max-h-48 object-cover" src="./pictures/Forger.webp" />
+        <img matCardImage class="max-h-48 object-cover" src="{{ project.url }}" />
         <mat-card-content class="pt-4!">{{ project.description }} </mat-card-content>
         <!-- <mat-card-footer class="p-4">
         <button matButton [routerLink]="'projects'">View Details >></button>

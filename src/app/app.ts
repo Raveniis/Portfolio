@@ -44,9 +44,8 @@ export class App {
       if (!isMaintenanceDialogShown || !(isMaintenanceDialogShown === 'true')) {
         this.dialog.open(MaintenanceModal, {
           data: {
-            title: 'Under development',
-            message: `This website is still under development. Items/information found inside are all subject to changes and improvements. I'm open to suggestions/feedbacks to
-                    further improve this website through my contacts found in the footer`,
+            title: 'Under development!',
+            message: `This website is still currently under development. Items and information found in the website are subject to changes without prior notice. If you have any inquiries, suggestions or feedback, please feel free to contact me!`,
           },
         });
 

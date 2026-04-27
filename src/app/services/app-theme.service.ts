@@ -7,7 +7,7 @@ type Theme = 'light' | 'dark';
 })
 export class AppTheme {
   private defaultTheme: Theme = 'dark';
-  private savedTheme: Theme = (sessionStorage.getItem('theme') as 'light' | 'dark') || this.defaultTheme;
+  private savedTheme: Theme = (localStorage.getItem('theme') as 'light' | 'dark') || this.defaultTheme;
 
   private themeSubject = new BehaviorSubject<string>(this.savedTheme || '');
   currentTheme$ = this.themeSubject.asObservable();
@@ -15,7 +15,7 @@ export class AppTheme {
   setTheme(isDarkMode: boolean) {
     const currentTheme = isDarkMode ? 'dark' : 'light';
     document.body.classList.toggle('dark', isDarkMode);
-    sessionStorage.setItem('theme', currentTheme);
+    localStorage.setItem('theme', currentTheme);
     this.themeSubject.next(currentTheme);
   }
 

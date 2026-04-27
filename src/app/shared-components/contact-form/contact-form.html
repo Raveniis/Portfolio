@@ -30,8 +30,9 @@
               @if (showRecaptcha) {
                 <re-captcha
                   #recaptcha
-                  class="origin-top-left scale-[0.77] sm:scale-[1.005] sm:translate-x-[1px] sm:translate-y-[2px]"
+                  [class]="!(isMobile$ | async) ? 'origin-top-left scale-[0.77] sm:scale-[1.005] sm:translate-x-[1px] sm:translate-y-[2px]' : ''"
                   formControlName="recaptcha"
+                  [size]="(isMobile$ | async) ? 'compact' : 'normal'"
                   [siteKey]="siteKey"
                   [theme]="theme"
                 ></re-captcha>
