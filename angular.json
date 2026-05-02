@@ -10,7 +10,6 @@
       "style": "scss",
       "inlineTemplate": false,
       "inlineStyle": false
-
     }
   },
   "projects": {
@@ -30,11 +29,11 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/robots.txt",
+              "src/sitemap.xml"
             ],
-            "styles": [
-              "src/styles.scss"
-            ]
+            "styles": ["src/styles.scss"]
           },
           "configurations": {
             "production": {
