@@ -1,19 +1,61 @@
 <section id="experience" class="flex flex-col gap-8" trackSection>
   <h2 class="text-center font-medium text-5xl uppercase tracking-wider">Experience</h2>
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12">
+  <div class="relative grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 md:gap-20">
+    <div class="absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-gradient-to-b from-blue-300 to-blue-900 rounded-full"></div>
     @for (experience of experiences; track $index) {
-      <mat-card class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
-        <mat-card-header>
-          <mat-card-title>{{ experience.Position }}</mat-card-title>
-          <mat-card-subtitle class="text-gray-500! dark:text-gray-400!"
-            >{{ experience.Company }} | {{ experience.start_date | date: 'MMMM yyyy' }} –
-            {{ experience.end_date === 'current' ? 'Current' : (experience.end_date | date: 'MMMM yyyy') }}</mat-card-subtitle
-          >
-        </mat-card-header>
-        <mat-card-content class="pt-4!">
-          {{ experience.description }}
-        </mat-card-content>
-      </mat-card>
+      @if ($index % 2 === 0) {
+        <mat-card class="relative col-span-1 border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
+          <div class="absolute right-0 top-8 translate-x-14">
+            <div class="w-8 h-8 bg-blue-400/80 rounded-full animate-pulse"></div>
+
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-100 rounded-full shadow-md"></div>
+          </div>
+          <mat-card-header>
+            <mat-card-title>{{ experience.Position }}</mat-card-title>
+            <mat-card-subtitle class="text-gray-500! dark:text-gray-400!"
+              >{{ experience.Company }}
+              <span class="md:hidden">
+                | {{ experience.start_date | date: 'MMMM yyyy' }} –
+                {{ experience.end_date === 'current' ? 'Current' : (experience.end_date | date: 'MMMM yyyy') }}</span
+              ></mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content class="pt-4!">
+            {{ experience.description }}
+          </mat-card-content>
+        </mat-card>
+        <div class="hidden md:block">
+          <h5 class="mt-8 font-medium text-2xl text-gray-500 uppercase tracking-widest">
+            {{ experience.start_date | date: 'MMMM yyyy' }} – {{ experience.end_date === 'current' ? 'Current' : (experience.end_date | date: 'MMMM yyyy') }}
+          </h5>
+        </div>
+      } @else {
+        <div class="hidden md:block">
+          <h5 class="mt-8 font-medium text-2xl text-gray-500 uppercase tracking-widest text-right">
+            {{ experience.start_date | date: 'MMMM yyyy' }} – {{ experience.end_date === 'current' ? 'Current' : (experience.end_date | date: 'MMMM yyyy') }}
+          </h5>
+        </div>
+        <mat-card class="col-span-1 border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
+          <div class="absolute left-0 top-8 -translate-x-14">
+            <div class="w-8 h-8 bg-blue-400/80 rounded-full animate-pulse"></div>
+
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-100 rounded-full shadow-md"></div>
+          </div>
+          <mat-card-header>
+            <mat-card-title>{{ experience.Position }}</mat-card-title>
+            <mat-card-subtitle class="text-gray-500! dark:text-gray-400!"
+              >{{ experience.Company }}
+              <span class="md:hidden">
+                | {{ experience.start_date | date: 'MMMM yyyy' }} –
+                {{ experience.end_date === 'current' ? 'Current' : (experience.end_date | date: 'MMMM yyyy') }}</span
+              ></mat-card-subtitle
+            >
+          </mat-card-header>
+          <mat-card-content class="pt-4!">
+            {{ experience.description }}
+          </mat-card-content>
+        </mat-card>
+      }
     }
   </div>
 </section>

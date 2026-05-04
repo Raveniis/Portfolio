@@ -11,7 +11,6 @@ import { MailService } from '../../services/email.service';
 import { TrackSectionDirective } from '../../directives/track-section';
 import { ScrollViewService } from '../../services/scroll-view.service';
 import { MediaQueryService } from '../../services/media-query.service';
-import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-contact-form',
@@ -29,7 +28,7 @@ export class ContactForm {
   private cdr = inject(ChangeDetectorRef);
   private utils = inject(Utils);
   private mailService = inject(MailService);
-  private mobileQueryService = inject(MediaQueryService)
+  private mobileQueryService = inject(MediaQueryService);
 
   get trackElement() {
     return this.section?.el.nativeElement;

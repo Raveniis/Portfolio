@@ -42,7 +42,7 @@
         </div>
         <div class="pt-8">
           <div class="ml-auto w-fit" matTooltip="Fill all required fields (*) to submit the form" [matTooltipDisabled]="emailForm.valid">
-            <button [disabled]="emailForm.invalid" matButton="filled" type="submit">
+            <button [disabled]="emailForm.invalid || isSubmitting" matButton="filled" type="submit">
               @if (!isSubmitting) {
                 Send
               } @else {
