@@ -40,7 +40,7 @@ export class Utils {
     });
   }
 
-  openToastAlert(icon: SweetAlertIcon, title: string) {
+  openToastAlert(title: string, icon: SweetAlertIcon) {
     const Toast = Swal.mixin({
       toast: true,
       position: 'top-end',

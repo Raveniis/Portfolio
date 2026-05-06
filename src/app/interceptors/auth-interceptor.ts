@@ -27,8 +27,12 @@ export const AuthInterceptor: HttpInterceptorFn = (req, next) => {
           return throwError(() => error);
 
         case 429:
-          utils.openToastAlert('error', error.error.message || 'Too many request! Please try again later.');
+          utils.openToastAlert(error.error.message || 'Too many request! Please try again later.', 'error');
           return throwError(() => new Error('Too many requests. Try again later.'));
+
+        case 500:
+          utils.openAlert('Server Error!', error.error.message || 'An error occurred on the server.', 'error');
+          return throwError(() => error);
 
         default:
           return throwError(() => error);

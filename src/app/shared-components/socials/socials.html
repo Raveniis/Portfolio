@@ -31,7 +31,7 @@
 </div>
 
 <ng-template #iconButtonTemplate let-social="social" let-iconSize="iconSize" let-isColorFixed="isColorFixed">
-  <button mat-icon-button class="flex! justify-center! items-center!" (click)="copyOnClick(social.text ? social.text : '')">
+  <button mat-icon-button class="flex! justify-center! items-center!" (click)="social.text ? copyOnClick(social.text) : null">
     <span [class]="social.icon + ' ' + iconSize" [ngClass]="isColorFixed ? 'text-white' : 'text-black-200 dark:text-white'"></span>
   </button>
 </ng-template>

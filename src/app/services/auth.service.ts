@@ -14,7 +14,7 @@ export class AuthService {
       this.refresh$ = this.api.fetchData('POST', 'get-token').pipe(
         shareReplay(1),
         catchError((err) => {
-          this.utils.openToastAlert('error', 'Unable to authenticate! Please try again later.');
+          this.utils.openToastAlert('Unable to authenticate! Please try again later.', 'error');
           return throwError(() => err);
         }),
         finalize(() => {
