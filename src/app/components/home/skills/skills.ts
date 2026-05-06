@@ -1,5 +1,5 @@
 import { Component, inject, ViewChild } from '@angular/core';
-import skills from '../../../data/skills.data';
+import techStacks from '../../../data/skills.data';
 import { TrackSectionDirective } from '../../../directives/track-section';
 import { ScrollViewService } from '../../../services/scroll-view.service';
 import { MaterialModules } from '../../../../modules/module';
@@ -13,7 +13,8 @@ import { MaterialModules } from '../../../../modules/module';
 export class SkillsComponent {
   @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
   private scrollService = inject(ScrollViewService);
-  private observer!: IntersectionObserver;
+
+  protected techStacks: TechStack[] = techStacks;
 
   get trackElement() {
     return this.section?.el.nativeElement;
@@ -22,10 +23,4 @@ export class SkillsComponent {
   ngAfterViewInit() {
     this.scrollService.observeElement(this.trackElement);
   }
-
-  ngOnDestroy() {
-    if (this.observer) this.observer.disconnect();
-  }
-
-  protected skills: Skill[] = skills;
 }

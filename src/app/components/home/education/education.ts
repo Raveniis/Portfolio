@@ -11,8 +11,10 @@ import { ScrollViewService } from '../../../services/scroll-view.service';
   styleUrl: './education.scss',
 })
 export class EducationComponent {
-  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective
+  @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
   private scrollService = inject(ScrollViewService);
+
+  protected educations: Education[] = education;
 
   get trackElement() {
     return this.section?.el.nativeElement;
@@ -21,6 +23,4 @@ export class EducationComponent {
   ngAfterViewInit() {
     this.scrollService.observeElement(this.trackElement);
   }
-  
-  protected educations: Education[] = education;
 }

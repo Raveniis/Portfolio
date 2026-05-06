@@ -18,6 +18,8 @@ export class HeroComponent {
   private dialog = inject(MatDialog);
   private scrollService = inject(ScrollViewService);
 
+  protected heroData: Hero = heroData;
+
   get trackElement() {
     return this.section?.el.nativeElement;
   }
@@ -25,8 +27,6 @@ export class HeroComponent {
   ngAfterViewInit() {
     this.scrollService.observeElement(this.trackElement);
   }
-
-  protected heroData: Hero = heroData;
 
   viewDocument() {
     this.dialog.open(DocumentViewerModal, {

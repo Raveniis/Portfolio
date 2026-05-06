@@ -14,6 +14,8 @@ import { ScrollViewService } from '../../../services/scroll-view.service';
 export class ExperienceComponent {
   @ViewChild(TrackSectionDirective) section!: TrackSectionDirective;
   private scrollService = inject(ScrollViewService);
+  
+  protected experiences: Experience[] = experiences;
 
   get trackElement() {
     return this.section?.el.nativeElement;
@@ -23,6 +25,5 @@ export class ExperienceComponent {
     this.scrollService.observeElement(this.trackElement);
   }
 
-  protected experiences: Experience[] = experiences;
 }
   

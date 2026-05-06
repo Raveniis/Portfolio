@@ -1,13 +1,18 @@
-<section id="skills" class="flex flex-col gap-8" trackSection>
-  <h2 class="text-center font-medium text-5xl uppercase tracking-wider">Skills</h2>
-  <div class="grid grid-cols-2 sm:flex flex-wrap gap-4 justify-center">
-    @for (skill of skills; track skill.name) {
-      <mat-card
-        class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500! flex flex-col items-center gap-2 w-full sm:w-36 h-fit p-4 rounded-md border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500 hover:scale-105 hover:-translate-y-1 transition-all duration-300"
-      >
-        <img class="max-w-32 sm:max-w-7xl w-full h-full p-2" [src]="skill.src" [alt]="skill.name" />
-        <p class="text-center text-lg font-medium">{{ skill.name }}</p>
-      </mat-card>
+<section id="techStack" class="flex flex-col gap-8" trackSection>
+  <h2 class="text-center font-medium text-5xl uppercase tracking-wider">Tech Stack</h2>
+  <div class="flex flex-col gap-8">
+    @for (techStack of techStacks; track techStack.category) {
+      <h3 class="text-2xl font-medium uppercase text-gray-500 text-center dark:text-gray-400">{{ techStack.category }}</h3>
+      <div class="grid grid-cols-2 sm:flex flex-wrap gap-4 justify-center">
+        @for (skill of techStack.skills; track skill.name) {
+          <mat-card
+            class="border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500! flex flex-col items-center gap-2 w-full sm:w-36 h-fit p-4 rounded-md border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500 hover:scale-105 hover:-translate-y-1 transition-all duration-300"
+          >
+            <img class="max-w-32 sm:max-w-7xl w-full h-full p-2" [src]="skill.src" [alt]="skill.name" />
+            <p class="text-center text-lg font-medium">{{ skill.name }}</p>
+          </mat-card>
+        }
+      </div>
     }
   </div>
 </section>
