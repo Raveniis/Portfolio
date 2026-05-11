@@ -29,7 +29,7 @@
 
 <ng-template #timelineCardTemplate let-experience="experience" let-orientation="orientation">
   <mat-card class="col-span-1 border-1 border-blue-500 dark:border-blue-950 bg-white dark:bg-blue-500!">
-    <div [ngClass]="orientation === 'right' ? '-left-14' : '-right-14'" class="absolute top-8">
+    <div [ngClass]="orientation === 'right' ? '-left-14' : 'max-md:-left-14 md:-right-14'" class="absolute hidden sm:block top-8">
       <div class="w-8 h-8 bg-blue-200/40 dark:bg-blue-400/80 rounded-full animate-pulse"></div>
 
       <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-blue-300 dark:bg-blue-100 rounded-full shadow-md"></div>

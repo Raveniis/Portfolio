@@ -15,8 +15,7 @@ export class Utils {
     this.openSnackbar('Text has been Copied!');
   }
 
-  //private for now...
-  private openSnackbar(text: string, action: string = '', onDismiss: (() => void) | null = null, params = {}) {
+  openSnackbar(text: string, action: string = '', onDismiss: (() => void) | null = null, params = {}) {
     const snackbarRef = this.snackbar.open(text, action, {
       duration: 3000,
       horizontalPosition: 'center',

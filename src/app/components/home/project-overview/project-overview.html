@@ -7,22 +7,26 @@
           <mat-card-title>{{ project.title }}</mat-card-title>
           <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">{{ project.sub_title }}</mat-card-subtitle>
         </mat-card-header>
-        <img matCardImage class="max-h-48 object-cover" src="{{ project.url }}" />
-        <mat-card-content class="pt-4!">{{ project.description }} </mat-card-content>
-        <!-- <mat-card-footer class="p-4">
-        <button matButton [routerLink]="'projects'">View Details >></button>
-      </mat-card-footer> -->
-        <mat-card-footer class="p-4">
-          <mat-chip-set>
-            @for (tech of project.technologies; track $index) {
-              <mat-chip>
-                @if (tech.icon) {
-                  <img matChipAvatar [src]="tech.icon" [alt]="tech.name" />
-                }
-                {{ tech.name }}</mat-chip
-              >
-            }
-          </mat-chip-set>
+        <img matCardImage class="max-h-48 object-cover" src="{{ project.url }}" alt="{{ project.title }}" />
+        <mat-card-content class="pt-4!">
+          <div class="flex flex-col gap-2">
+            <mat-chip-set>
+              @for (tech of project.technologies; track $index) {
+                <mat-chip>
+                  @if (tech.icon) {
+                    <img matChipAvatar [src]="tech.icon" [alt]="tech.name" />
+                  }
+                  {{ tech.name }}</mat-chip
+                >
+              }
+            </mat-chip-set>
+            <p>{{ project.description }}</p>
+          </div>
+        </mat-card-content>
+        <mat-card-footer class="p-4 mt-auto">
+          <button mat-stroked-button [disabled]="!project.link" (click)="project.link === 'https://raveniis.github.io/Portfolio/' ? celebrate() : navigate()">
+            {{ project.link ? 'View Website' : 'Link Unavailable' }}
+          </button>
         </mat-card-footer>
       </mat-card>
     }

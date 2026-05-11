@@ -10,6 +10,7 @@ const projects: Project[] = [
       { icon: './icons/Tailwind.svg', name: 'Tailwind' },
       { icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg', name: 'Express' },
     ],
+    link: "https://raveniis.github.io/Portfolio/"
   },
   {
     title: 'ITrack',
@@ -26,6 +27,7 @@ const projects: Project[] = [
         name: 'SCSS',
       },
     ],
+    link: null
   },
 ];
 

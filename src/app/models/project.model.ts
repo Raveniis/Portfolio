@@ -9,4 +9,5 @@ interface Project {
   url: string;
   description: string;
   technologies: Technology[];
+  link: null | string;
 }
