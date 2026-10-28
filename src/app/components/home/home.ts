@@ -6,11 +6,12 @@ import { EducationComponent } from './education/education';
 import { ProjectOverview } from './project-overview/project-overview';
 import { ScrollViewService } from '../../services/scroll-view.service';
 import { ContactForm } from '../../shared-components/contact-form/contact-form';
-import { MatDivider } from "@angular/material/divider";
+import { MatDivider } from '@angular/material/divider';
+import { PixelSnowComponent } from './background/pixel-snow.component';
 
 @Component({
   selector: 'app-home',
-  imports: [HeroComponent, ExperienceComponent, SkillsComponent, EducationComponent, ProjectOverview, ContactForm, MatDivider],
+  imports: [HeroComponent, ExperienceComponent, SkillsComponent, EducationComponent, ProjectOverview, ContactForm, MatDivider, PixelSnowComponent],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
