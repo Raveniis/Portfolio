@@ -7,7 +7,13 @@
           <mat-card-title>{{ project.title }}</mat-card-title>
           <mat-card-subtitle class="text-gray-500! dark:text-gray-400!">{{ project.sub_title }}</mat-card-subtitle>
         </mat-card-header>
-        <img matCardImage class="max-h-48 object-cover" src="{{ project.url }}" alt="{{ project.title }}" />
+        @if (!project.url) {
+          <div class="h-48">
+            <app-empty-placeholder message="Preview unavailable." icon="mdi mdi-image-off-outline"></app-empty-placeholder>
+          </div>
+        } @else {
+          <img matCardImage class="h-48 object-cover" src="{{ project.url }}" alt="{{ project.title }}" />
+        }
         <mat-card-content class="pt-4!">
           <div class="flex flex-col gap-2">
             <mat-chip-set>

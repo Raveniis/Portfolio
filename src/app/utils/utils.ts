@@ -56,4 +56,9 @@ export class Utils {
       title,
     });
   }
+
+  isWinterSeason(): boolean {
+    const currentMonth = new Date().getMonth() + 1; // getMonth() returns 0-11, so we add 1 to get 1-12
+    return currentMonth === 9 || currentMonth === 10 || currentMonth === 11 || currentMonth === 12 || currentMonth === 1;
+  }
 }

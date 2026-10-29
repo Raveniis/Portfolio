@@ -6,7 +6,7 @@ interface Technology {
 interface Project {
   title: string;
   sub_title: string;
-  url: string;
+  url: undefined | string;
   description: string;
   technologies: Technology[];
   link: null | string;

@@ -8,6 +8,8 @@ import { ScrollViewService } from '../../services/scroll-view.service';
 import { ContactForm } from '../../shared-components/contact-form/contact-form';
 import { MatDivider } from '@angular/material/divider';
 import { PixelSnowComponent } from './background/pixel-snow.component';
+import { Utils } from '../../utils/utils';
+import type { PixelSnowVariant } from './background/pixel-snow.component';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +20,9 @@ import { PixelSnowComponent } from './background/pixel-snow.component';
 export class Home {
   @ViewChildren('tracker') sections!: QueryList<any>;
   private scrollService = inject(ScrollViewService);
+  private isWinterSeason = inject(Utils).isWinterSeason();
+
+  backgroundParticles: PixelSnowVariant = this.isWinterSeason ? 'snowflake' : 'round';
 
   ngOnDestroy() {
     this.scrollService.disconnectObserver();
